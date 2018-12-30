@@ -1,4 +1,4 @@
-package com.arondillqs5328.unsplashme;
+package com.arondillqs5328.unsplashme.activities;
 
 import android.content.Intent;
 import android.os.Bundle;

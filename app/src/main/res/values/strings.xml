@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">UnsplashMe</string>
+    <string name="title_new">NEW</string>
+    <string name="title_featured">FEATURED</string>
+    <string name="title_collections">COLLECTIONS</string>
+    <string name="search">search</string>
 </resources>
