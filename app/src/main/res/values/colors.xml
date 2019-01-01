@@ -6,4 +6,5 @@
     <color name="colorPrimaryLight">#D1C4E9</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
+    <color name="active_nav_item_color">#1F661FFF</color>
 </resources>

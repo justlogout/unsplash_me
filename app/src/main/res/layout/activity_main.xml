@@ -15,6 +15,7 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:itemTextColor="@color/nav_text_selector"
+        app:itemBackground="@drawable/nav_item_background_selector"
         app:menu="@menu/drawer_menu" />
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
