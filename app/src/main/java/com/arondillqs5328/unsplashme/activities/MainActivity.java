@@ -42,9 +42,9 @@ public class MainActivity extends AppCompatActivity {
         mTabLayout.setupWithViewPager(mViewPager);
 
         PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager());
-        pagerAdapter.addFragment(NewPhotoFragment.newInstance(), getString(R.string.title_new));
-        pagerAdapter.addFragment(FeaturedPhotoFragment.newInstance(), getString(R.string.title_featured));
-        pagerAdapter.addFragment(CollectionsPhotoFragment.newInstance(), getString(R.string.title_collections));
+        pagerAdapter.addFragment(NewPhotoFragment.newInstance(), getString(R.string.tab_new));
+        pagerAdapter.addFragment(FeaturedPhotoFragment.newInstance(), getString(R.string.tab_featured));
+        pagerAdapter.addFragment(CollectionsPhotoFragment.newInstance(), getString(R.string.tab_collections));
 
         mViewPager.setAdapter(pagerAdapter);
         mViewPager.setOffscreenPageLimit(2);
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     private void setUpToolbar() {
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_navigation_menu_24dp);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_nav_menu_white_24dp);
     }
 
     @Override

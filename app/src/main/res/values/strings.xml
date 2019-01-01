@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">UnsplashMe</string>
-    <string name="title_new">NEW</string>
-    <string name="title_featured">FEATURED</string>
-    <string name="title_collections">COLLECTIONS</string>
+    <string name="tab_new">New</string>
+    <string name="tab_featured">Featured</string>
+    <string name="tab_collections">Collections</string>
     <string name="search">search</string>
     <string name="sort">sort</string>
     <string name="latest">Latest</string>
