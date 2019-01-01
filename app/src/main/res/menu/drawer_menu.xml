@@ -1,18 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_new"
-            android:checked="true"
-            android:icon="@drawable/nav_new_icon_selector"
-            android:title="@string/tab_new" />
-        <item
-            android:id="@+id/nav_featured"
-            android:icon="@drawable/nav_featured_icon_selector"
-            android:title="@string/tab_featured" />
-        <item
-            android:id="@+id/nav_collections"
-            android:icon="@drawable/nav_collections_icon_selector"
-            android:title="@string/tab_collections" />
+        <group
+            android:id="@+id/nav_1"
+            android:checkableBehavior="single">
+            <item
+                android:id="@+id/nav_new"
+                android:checked="true"
+                android:icon="@drawable/nav_new_icon_selector"
+                android:title="@string/tab_new" />
+            <item
+                android:id="@+id/nav_featured"
+                android:icon="@drawable/nav_featured_icon_selector"
+                android:title="@string/tab_featured" />
+            <item
+                android:id="@+id/nav_collections"
+                android:icon="@drawable/nav_collections_icon_selector"
+                android:title="@string/tab_collections" />
+        </group>
+        <group
+            android:id="@+id/nav_2"
+            android:checkableBehavior="single">
+            <item
+                android:id="@+id/nav_settings"
+                android:icon="@drawable/nav_settings_icon_selector"
+                android:title="@string/settings" />
+            <item
+                android:id="@+id/nav_about"
+                android:icon="@drawable/nav_about_icon_selector"
+                android:title="@string/about" />
+        </group>
     </group>
 </menu>
