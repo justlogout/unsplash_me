@@ -4,4 +4,11 @@
     <string name="title_featured">FEATURED</string>
     <string name="title_collections">COLLECTIONS</string>
     <string name="search">search</string>
+    <string name="sort">sort</string>
+    <string name="latest">Latest</string>
+    <string name="oldest">Oldest</string>
+    <string name="popular">Popular</string>
+    <string name="all">All</string>
+    <string name="curated">Curated</string>
+    <string name="featured">Featured</string>
 </resources>

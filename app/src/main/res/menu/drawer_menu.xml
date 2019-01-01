@@ -5,7 +5,6 @@
         <item
             android:id="@+id/nav_camera"
             android:enabled="true"
-
             android:title="txt" />
         <item
             android:id="@+id/nav_gallery"
