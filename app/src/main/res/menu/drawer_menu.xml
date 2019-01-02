@@ -20,7 +20,7 @@
         </group>
         <group
             android:id="@+id/nav_2"
-            android:checkableBehavior="single">
+            android:checkableBehavior="none">
             <item
                 android:id="@+id/nav_settings"
                 android:icon="@drawable/nav_settings_icon_selector"

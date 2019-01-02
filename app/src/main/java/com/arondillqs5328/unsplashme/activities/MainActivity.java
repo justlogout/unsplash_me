@@ -11,8 +11,10 @@ import com.arondillqs5328.unsplashme.adapters.PagerAdapter;
 import com.arondillqs5328.unsplashme.fragments.CollectionsPhotoFragment;
 import com.arondillqs5328.unsplashme.fragments.FeaturedPhotoFragment;
 import com.arondillqs5328.unsplashme.fragments.NewPhotoFragment;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.toolbar) Toolbar mToolbar;
     @BindView(R.id.drawer_layout) DrawerLayout mDrawerLayout;
+    @BindView(R.id.navigation_view) NavigationView mNavigationView;
     @BindView(R.id.view_pager) ViewPager mViewPager;
     @BindView(R.id.tab_layout) TabLayout mTabLayout;
 
@@ -36,6 +39,13 @@ public class MainActivity extends AppCompatActivity {
 
         setUpToolbar();
         setUpTabLayoutAndViewPager();
+        setUpNavigationView();
+    }
+
+    private void setUpToolbar() {
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_nav_menu_white_24dp);
     }
 
     private void setUpTabLayoutAndViewPager() {
@@ -48,12 +58,66 @@ public class MainActivity extends AppCompatActivity {
 
         mViewPager.setAdapter(pagerAdapter);
         mViewPager.setOffscreenPageLimit(2);
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                switch (position) {
+                    case 0:
+                        mNavigationView.setCheckedItem(R.id.nav_new);
+                        break;
+                    case 1:
+                        mNavigationView.setCheckedItem(R.id.nav_featured);
+                        break;
+                    case 2:
+                        mNavigationView.setCheckedItem(R.id.nav_collections);
+                        break;
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
-    private void setUpToolbar() {
-        setSupportActionBar(mToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_nav_menu_white_24dp);
+    private void setUpNavigationView() {
+        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.nav_new:
+                        Toast.makeText(getApplicationContext(), "new", Toast.LENGTH_SHORT).show();
+                        mDrawerLayout.closeDrawer(GravityCompat.START);
+                        mViewPager.setCurrentItem(0);
+                        return true;
+                    case R.id.nav_featured:
+                        Toast.makeText(getApplicationContext(), "featured", Toast.LENGTH_SHORT).show();
+                        mDrawerLayout.closeDrawer(GravityCompat.START);
+                        mViewPager.setCurrentItem(1);
+                        return true;
+                    case R.id.nav_collections:
+                        Toast.makeText(getApplicationContext(), "collections", Toast.LENGTH_SHORT).show();
+                        mDrawerLayout.closeDrawer(GravityCompat.START);
+                        mViewPager.setCurrentItem(2);
+                        return true;
+                    case R.id.nav_settings:
+                        Toast.makeText(getApplicationContext(), "settings", Toast.LENGTH_SHORT).show();
+                        mDrawerLayout.closeDrawer(GravityCompat.START);
+                        return true;
+                    case R.id.nav_about:
+                        Toast.makeText(getApplicationContext(), "about", Toast.LENGTH_SHORT).show();
+                        mDrawerLayout.closeDrawer(GravityCompat.START);
+                        return true;
+                }
+                return true;
+            }
+        });
     }
 
     @Override
