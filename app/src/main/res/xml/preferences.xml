@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:title="@string/general">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory
+        android:title="@string/general"
+        app:iconSpaceReserved="false">
         <ListPreference
             android:defaultValue="@string/default_language"
             android:dialogTitle="@string/language"
@@ -10,7 +13,8 @@
             android:key="@string/language"
             android:negativeButtonText="@string/cancel"
             android:summary="@string/cooming_soon"
-            android:title="@string/language" />
+            android:title="@string/language"
+            app:iconSpaceReserved="false" />
 
         <ListPreference
             android:defaultValue="@string/default_theme"
@@ -21,10 +25,13 @@
             android:key="@string/theme"
             android:negativeButtonText="@string/cancel"
             android:summary="@string/cooming_soon"
-            android:title="@string/theme" />
+            android:title="@string/theme"
+            app:iconSpaceReserved="false" />
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/quality">
+    <PreferenceCategory
+        android:title="@string/quality"
+        app:iconSpaceReserved="false">
         <ListPreference
             android:defaultValue="@string/default_load_quality"
             android:dialogTitle="@string/load_quality"
@@ -33,7 +40,8 @@
             android:key="@string/load_quality"
             android:negativeButtonText="@string/cancel"
             android:summary="@string/load_quality_subtitle"
-            android:title="@string/load_quality" />
+            android:title="@string/load_quality"
+            app:iconSpaceReserved="false" />
 
         <ListPreference
             android:defaultValue="@string/default_download_quality"
@@ -43,7 +51,8 @@
             android:key="@string/download_quality"
             android:negativeButtonText="@string/cancel"
             android:summary="@string/download_quality_subtitle"
-            android:title="@string/download_quality" />
+            android:title="@string/download_quality"
+            app:iconSpaceReserved="false" />
 
         <ListPreference
             android:defaultValue="@string/default_wallpaper_quality"
@@ -53,6 +62,7 @@
             android:key="@string/wallpaper_quality"
             android:negativeButtonText="@string/cancel"
             android:summary="@string/wallpaper_quality_subtitle"
-            android:title="@string/wallpaper_quality" />
+            android:title="@string/wallpaper_quality"
+            app:iconSpaceReserved="false" />
     </PreferenceCategory>
 </PreferenceScreen>
