@@ -1,5 +1,6 @@
 package com.arondillqs5328.unsplashme.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -107,8 +108,9 @@ public class MainActivity extends AppCompatActivity {
                         mViewPager.setCurrentItem(2);
                         return true;
                     case R.id.nav_settings:
-                        Toast.makeText(getApplicationContext(), "settings", Toast.LENGTH_SHORT).show();
                         mDrawerLayout.closeDrawer(GravityCompat.START);
+                        Intent intent = SettingsActivity.newIntent(getApplicationContext());
+                        startActivity(intent);
                         return true;
                     case R.id.nav_about:
                         Toast.makeText(getApplicationContext(), "about", Toast.LENGTH_SHORT).show();

@@ -13,4 +13,91 @@
     <string name="featured">Featured</string>
     <string name="settings">Settings</string>
     <string name="about">About</string>
+    <string name="cancel">Cancel</string>
+    <string name="cooming_soon">Comming soon</string>
+
+    <!--START SETTINGS-->
+
+    <string name="general">General</string>
+
+    <string name="language">Language</string>
+    <string name="default_language">English</string>
+    <string-array name="language_entires">
+        <item>English</item>
+        <item>Ukrainian</item>
+    </string-array>
+    <string-array name="language_values">
+        <item>English</item>
+        <item>Ukrainian</item>
+    </string-array>
+
+    <string name="theme">Theme</string>
+    <string name="default_theme">Default</string>
+    <string-array name="theme_entires">
+        <item>Default</item>
+        <item>Dark</item>
+    </string-array>
+    <string-array name="theme_values">
+        <item>Default</item>
+        <item>Dark</item>
+    </string-array>
+
+    <string name="quality">Quality</string>
+
+    <string name="load_quality">Load Quality</string>
+    <string name="load_quality_subtitle">Choose the quality of the image that are loaded</string>
+    <string name="default_load_quality">Regular</string>
+    <string-array name="load_quality_entires">
+        <item>Raw</item>
+        <item>Full</item>
+        <item>Regular</item>
+        <item>Small</item>
+        <item>Thumb</item>
+    </string-array>
+    <string-array name="load_quality_values">
+        <item>Raw</item>
+        <item>Full</item>
+        <item>Regular</item>
+        <item>Small</item>
+        <item>Thumb</item>
+    </string-array>
+
+    <string name="download_quality">Download Quality</string>
+    <string name="download_quality_subtitle">Choose the quality of the image that are downloaded</string>
+    <string name="default_download_quality">Full</string>
+    <string-array name="download_quality_entires">
+        <item>Raw</item>
+        <item>Full</item>
+        <item>Regular</item>
+        <item>Small</item>
+        <item>Thumb</item>
+    </string-array>
+    <string-array name="download_quality_values">
+        <item>Raw</item>
+        <item>Full</item>
+        <item>Regular</item>
+        <item>Small</item>
+        <item>Thumb</item>
+    </string-array>
+
+    <string name="wallpaper_quality">Wallpaper Quality</string>
+    <string name="wallpaper_quality_subtitle">Choose the quality of the wallpapers set</string>
+    <string name="default_wallpaper_quality">Full</string>
+    <string-array name="wallpaper_quality_entires">
+        <item>Raw</item>
+        <item>Full</item>
+        <item>Regular</item>
+        <item>Small</item>
+        <item>Thumb</item>
+    </string-array>
+    <string-array name="wallpaper_quality_values">
+        <item>Raw</item>
+        <item>Full</item>
+        <item>Regular</item>
+        <item>Small</item>
+        <item>Thumb</item>
+    </string-array>
+
+    <!--END SETTINGS-->
+
 </resources>
