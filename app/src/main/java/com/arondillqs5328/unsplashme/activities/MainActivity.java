@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.arondillqs5328.unsplashme.R;
 import com.arondillqs5328.unsplashme.adapters.PagerAdapter;
@@ -91,30 +90,29 @@ public class MainActivity extends AppCompatActivity {
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Intent intent;
                 switch (item.getItemId()) {
                     case R.id.nav_new:
-                        Toast.makeText(getApplicationContext(), "new", Toast.LENGTH_SHORT).show();
                         mDrawerLayout.closeDrawer(GravityCompat.START);
                         mViewPager.setCurrentItem(0);
                         return true;
                     case R.id.nav_featured:
-                        Toast.makeText(getApplicationContext(), "featured", Toast.LENGTH_SHORT).show();
                         mDrawerLayout.closeDrawer(GravityCompat.START);
                         mViewPager.setCurrentItem(1);
                         return true;
                     case R.id.nav_collections:
-                        Toast.makeText(getApplicationContext(), "collections", Toast.LENGTH_SHORT).show();
                         mDrawerLayout.closeDrawer(GravityCompat.START);
                         mViewPager.setCurrentItem(2);
                         return true;
                     case R.id.nav_settings:
                         mDrawerLayout.closeDrawer(GravityCompat.START);
-                        Intent intent = SettingsActivity.newIntent(getApplicationContext());
+                        intent = SettingsActivity.newIntent(getApplicationContext());
                         startActivity(intent);
                         return true;
                     case R.id.nav_about:
-                        Toast.makeText(getApplicationContext(), "about", Toast.LENGTH_SHORT).show();
                         mDrawerLayout.closeDrawer(GravityCompat.START);
+                        intent = AboutActivity.newIntent(getApplicationContext());
+                        startActivity(intent);
                         return true;
                 }
                 return true;
@@ -136,7 +134,6 @@ public class MainActivity extends AppCompatActivity {
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 return true;
             case R.id.search:
-                Toast.makeText(this, "SEARCH", Toast.LENGTH_LONG).show();
                 return true;
         }
         return super.onOptionsItemSelected(item);
