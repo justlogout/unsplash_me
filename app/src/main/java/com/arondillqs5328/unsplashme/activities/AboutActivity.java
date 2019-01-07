@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class AboutActivity extends AppCompatActivity {
 
     public static Intent newIntent(Context context) {
-        Intent intent = new Intent(context, SettingsActivity.class);
+        Intent intent = new Intent(context, AboutActivity.class);
         return intent;
     }
 
