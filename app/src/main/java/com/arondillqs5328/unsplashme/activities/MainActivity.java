@@ -134,6 +134,8 @@ public class MainActivity extends AppCompatActivity {
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 return true;
             case R.id.search:
+                Intent intent = SearchActivity.newIntent(getApplicationContext());
+                startActivity(intent);
                 return true;
         }
         return super.onOptionsItemSelected(item);
