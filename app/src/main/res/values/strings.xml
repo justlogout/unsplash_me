@@ -21,6 +21,7 @@
     <string name="general">General</string>
 
     <string name="language">Language</string>
+    <string name="language_key">Language</string>
     <string name="default_language">English</string>
     <string-array name="language_entires">
         <item>English</item>
@@ -32,6 +33,7 @@
     </string-array>
 
     <string name="theme">Theme</string>
+    <string name="theme_key">Theme</string>
     <string name="default_theme">Default</string>
     <string-array name="theme_entires">
         <item>Default</item>
@@ -45,6 +47,7 @@
     <string name="quality">Quality</string>
 
     <string name="load_quality">Load Quality</string>
+    <string name="load_quality_key">Load Quality</string>
     <string name="load_quality_subtitle">Choose the quality of the image that are loaded</string>
     <string name="default_load_quality">Regular</string>
     <string-array name="load_quality_entires">
@@ -63,6 +66,7 @@
     </string-array>
 
     <string name="download_quality">Download Quality</string>
+    <string name="download_quality_key">Download Quality</string>
     <string name="download_quality_subtitle">Choose the quality of the image that are downloaded</string>
     <string name="default_download_quality">Full</string>
     <string-array name="download_quality_entires">
@@ -81,6 +85,7 @@
     </string-array>
 
     <string name="wallpaper_quality">Wallpaper Quality</string>
+    <string name="wallpaper_quality_key">Wallpaper Quality</string>
     <string name="wallpaper_quality_subtitle">Choose the quality of the wallpapers set</string>
     <string name="default_wallpaper_quality">Full</string>
     <string-array name="wallpaper_quality_entires">
