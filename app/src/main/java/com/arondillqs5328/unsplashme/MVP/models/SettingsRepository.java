@@ -9,7 +9,7 @@ public class SettingsRepository implements SettingsContract.Model {
 
     @Override
     public void changePreference(String key, Object value) {
-        SharedPreferences.Editor editor = UnsplashMe.mSettings.edit();
+        SharedPreferences.Editor editor = UnsplashMe.sPreferences.edit();
         editor.putString(key, String.valueOf(value));
         editor.apply();
     }
