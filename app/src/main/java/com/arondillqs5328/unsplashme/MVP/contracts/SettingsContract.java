@@ -7,10 +7,7 @@ public interface SettingsContract {
     }
 
     interface Presenter {
-        void attachView(View view);
-
         void detachView();
-
         void onChangedPreference(String key, Object value);
     }
 

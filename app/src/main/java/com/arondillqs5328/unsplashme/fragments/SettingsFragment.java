@@ -10,8 +10,7 @@ import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
-public class SettingsFragment extends PreferenceFragmentCompat implements SettingsContract.View,
-        Preference.OnPreferenceChangeListener {
+public class SettingsFragment extends PreferenceFragmentCompat implements SettingsContract.View {
 
     private SettingsContract.Presenter mPresenter;
 
@@ -29,52 +28,59 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Settin
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.preferences);
+        setRetainInstance(true);
 
-        mPresenter = new SettingsPresenters();
-        mPresenter.attachView(this);
+        mPresenter = new SettingsPresenters(this);
 
-        initPreferences();
-    }
-
-    private void initPreferences() {
         mLanguagePreference = findPreference(getString(R.string.language_key));
+        mLanguagePreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                mPresenter.onChangedPreference(mLanguagePreference.getKey(), newValue);
+                return true;
+            }
+        });
+
         mThemePreference = findPreference(getString(R.string.theme_key));
+        mThemePreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                mPresenter.onChangedPreference(mThemePreference.getKey(), newValue);
+                return true;
+            }
+        });
+
         mLoadQualityPreference = findPreference(getString(R.string.load_quality_key));
+        mLoadQualityPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                mPresenter.onChangedPreference(mLoadQualityPreference.getKey(), newValue);
+                return true;
+            }
+        });
+
         mDownloadQualityPreference = findPreference(getString(R.string.download_quality_key));
+        mDownloadQualityPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                mPresenter.onChangedPreference(mDownloadQualityPreference.getKey(), newValue);
+                return true;
+            }
+        });
+
         mWallpaperQuality = findPreference(getString(R.string.wallpaper_quality_key));
-
-        mLanguagePreference.setOnPreferenceChangeListener(this);
-        mThemePreference.setOnPreferenceChangeListener(this);
-        mLoadQualityPreference.setOnPreferenceChangeListener(this);
-        mDownloadQualityPreference.setOnPreferenceChangeListener(this);
-        mWallpaperQuality.setOnPreferenceChangeListener(this);
+        mWallpaperQuality.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                mPresenter.onChangedPreference(mWallpaperQuality.getKey(), newValue);
+                return true;
+            }
+        });
     }
-
 
     @Override
     public void onDestroyView() {
         mPresenter.detachView();
         super.onDestroyView();
-    }
-
-    @Override
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (preference == mLanguagePreference) {
-            mPresenter.onChangedPreference(preference.getKey(), newValue);
-            return true;
-        } else if (preference == mThemePreference) {
-            mPresenter.onChangedPreference(preference.getKey(), newValue);
-            return true;
-        } else if (preference == mLoadQualityPreference) {
-            mPresenter.onChangedPreference(preference.getKey(), newValue);
-            return true;
-        } else if (preference == mDownloadQualityPreference) {
-            mPresenter.onChangedPreference(preference.getKey(), newValue);
-            return true;
-        } else if (preference == mWallpaperQuality) {
-            mPresenter.onChangedPreference(preference.getKey(), newValue);
-            return true;
-        }
-        return false;
     }
 }

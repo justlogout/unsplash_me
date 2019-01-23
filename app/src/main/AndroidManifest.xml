@@ -23,8 +23,7 @@
         <activity
             android:name=".activities.SettingsActivity"
             android:label="@string/settings"
-            android:parentActivityName=".activities.MainActivity"
-            android:screenOrientation="portrait" />
+            android:parentActivityName=".activities.MainActivity" />
         <activity android:name=".activities.AboutActivity" />
         <activity android:name=".activities.SearchActivity"></activity>
     </application>

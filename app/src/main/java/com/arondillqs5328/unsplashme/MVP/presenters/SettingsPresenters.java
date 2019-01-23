@@ -8,8 +8,7 @@ public class SettingsPresenters implements SettingsContract.Presenter {
     private SettingsContract.View mView;
     private SettingsContract.Model mModel;
 
-    @Override
-    public void attachView(SettingsContract.View view) {
+    public SettingsPresenters(SettingsContract.View view) {
         mView = view;
         mModel = new SettingsRepository();
     }
