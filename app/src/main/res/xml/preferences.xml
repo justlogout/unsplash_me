@@ -12,7 +12,7 @@
             android:entryValues="@array/language_values"
             android:key="@string/language_key"
             android:negativeButtonText="@string/cancel"
-            android:summary="@string/cooming_soon"
+            android:summary="@string/coming_soon"
             android:title="@string/language"
             app:iconSpaceReserved="false" />
 
@@ -24,7 +24,7 @@
             android:entryValues="@array/theme_values"
             android:key="@string/theme_key"
             android:negativeButtonText="@string/cancel"
-            android:summary="@string/cooming_soon"
+            android:summary="@string/coming_soon"
             android:title="@string/theme"
             app:iconSpaceReserved="false" />
     </PreferenceCategory>

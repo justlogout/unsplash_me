@@ -28,7 +28,6 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Settin
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.preferences);
-        setRetainInstance(true);
 
         mPresenter = new SettingsPresenters(this);
 
