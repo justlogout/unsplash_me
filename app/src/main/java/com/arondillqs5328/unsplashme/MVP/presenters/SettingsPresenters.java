@@ -6,11 +6,11 @@ import com.arondillqs5328.unsplashme.MVP.models.SettingsRepository;
 public class SettingsPresenters implements SettingsContract.Presenter {
 
     private SettingsContract.View mView;
-    private SettingsContract.Model mModel;
+    private SettingsContract.Repository mRepository;
 
-    public SettingsPresenters(SettingsContract.View view) {
+    public SettingsPresenters(SettingsContract.View view, SettingsRepository settingsRepository) {
         mView = view;
-        mModel = new SettingsRepository();
+        mRepository = settingsRepository;
     }
 
     @Override
@@ -20,6 +20,6 @@ public class SettingsPresenters implements SettingsContract.Presenter {
 
     @Override
     public void onChangedPreference(String key, Object value) {
-        mModel.changePreference(key, value);
+        mRepository.changePreference(key, value);
     }
 }

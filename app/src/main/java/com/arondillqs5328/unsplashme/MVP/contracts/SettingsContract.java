@@ -11,7 +11,7 @@ public interface SettingsContract {
         void onChangedPreference(String key, Object value);
     }
 
-    interface Model {
+    interface Repository {
         void changePreference(String key, Object value);
     }
 }
