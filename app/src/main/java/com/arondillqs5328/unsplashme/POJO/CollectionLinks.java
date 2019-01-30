@@ -3,7 +3,7 @@ package com.arondillqs5328.unsplashme.POJO;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Links {
+public class CollectionLinks {
 
     @SerializedName("self")
     @Expose
@@ -11,11 +11,11 @@ public class Links {
     @SerializedName("html")
     @Expose
     public String html;
-    @SerializedName("download")
+    @SerializedName("photos")
     @Expose
-    public String download;
-    @SerializedName("download_location")
+    public String photos;
+    @SerializedName("related")
     @Expose
-    public String downloadLocation;
+    public String related;
 
 }

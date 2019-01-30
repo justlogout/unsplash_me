@@ -19,6 +19,7 @@ public interface UnsplashPhotoAPI {
                                    @Query("per_page") int per_page,
                                    @Query("order_by") String order_by);
 
+    //tab FEATURED
     @GET("/photos/curated")
     Call<List<Photo>> getCuratedPhotos(@Query("page") int page,
                                        @Query("per_page") int per_page,
