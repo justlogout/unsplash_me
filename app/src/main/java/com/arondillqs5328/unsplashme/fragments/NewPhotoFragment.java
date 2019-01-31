@@ -7,6 +7,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.arondillqs5328.unsplashme.R;
@@ -14,8 +15,14 @@ import com.arondillqs5328.unsplashme.R;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class NewPhotoFragment extends Fragment {
+
+    @BindView(R.id.new_recycler) RecyclerView mRecyclerView;
+    @BindView(R.id.progressBar) ProgressBar mProgressBar;
 
     public static NewPhotoFragment newInstance() {
         NewPhotoFragment fragment = new NewPhotoFragment();
@@ -33,6 +40,7 @@ public class NewPhotoFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_new_photo, container, false);
         setRetainInstance(true);
+        ButterKnife.bind(this, view);
 
         return view;
     }
