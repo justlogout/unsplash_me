@@ -3,11 +3,11 @@ package com.arondillqs5328.unsplashme.fragments;
 import android.content.Context;
 import android.os.Bundle;
 
-import com.arondillqs5328.unsplashme.Common;
 import com.arondillqs5328.unsplashme.MVP.contracts.SettingsContract;
 import com.arondillqs5328.unsplashme.MVP.models.SettingsRepository;
 import com.arondillqs5328.unsplashme.MVP.presenters.SettingsPresenter;
 import com.arondillqs5328.unsplashme.R;
+import com.arondillqs5328.unsplashme.UnsplashMe;
 
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
@@ -32,7 +32,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Settin
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.preferences);
 
-        mPresenter = new SettingsPresenter(this, new SettingsRepository(getActivity().getSharedPreferences(Common.APP_PREFERENCES, Context.MODE_PRIVATE)));
+        mPresenter = new SettingsPresenter(this, new SettingsRepository(getActivity().getSharedPreferences(UnsplashMe.APP_PREFERENCES, Context.MODE_PRIVATE)));
 
         mLanguagePreference = findPreference(getString(R.string.language_key));
         mLanguagePreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {

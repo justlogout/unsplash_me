@@ -7,10 +7,6 @@ public interface BaseContract {
 
         void hideProgressBar();
 
-        void showFooter();
-
-        void hideFooter();
-
         void showNoInternetConection();
 
         void hideNoInternetConection();

@@ -22,10 +22,7 @@ public class NewPhotoPresenter extends BasePresenter implements NewPhotoContract
     public void onSuccess(List<Photo> photos) {
         if (isViewReady(mView)) {
             isFirstLoading = false;
-
             mView.hideProgressBar();
-            mView.hideFooter();
-
             mView.showMorePhoto(photos);
             mView.updateQuery();
         }
@@ -39,22 +36,17 @@ public class NewPhotoPresenter extends BasePresenter implements NewPhotoContract
     @Override
     public void onLoadMorePhoto(int page, int per_page, String order_by) {
         if (isViewReady(mView)) {
-            if (isFirstLoading) {
-                if (isNetworkConnection()) {
+            if (isNetworkConnection()) {
+                if (isFirstLoading) {
                     mView.hideNoInternetConection();
                     mView.showProgressBar();
                     mRepository.loadMoreNewPhoto(page, per_page, order_by);
                 } else {
-                    mView.hideProgressBar();
-                    mView.showNoInternetConection();
+                    mRepository.loadMoreNewPhoto(page, per_page, order_by);
                 }
             } else {
-                if (isNetworkConnection()) {
-                    mView.showFooter();
-                    mRepository.loadMoreNewPhoto(page, per_page, order_by);
-                } else {
-                    mView.hideFooter();
-                }
+                mView.hideProgressBar();
+                mView.showNoInternetConection();
             }
         }
     }

@@ -8,19 +8,17 @@ import okhttp3.Response;
 
 public class OkHttpClient {
 
-    private final String API_HEADER = "client_id";
+    private final String API_HEADER = "Authorization";
     private final String API_KEY = "";
 
     public okhttp3.OkHttpClient getOkHttpClientInstance() {
-        okhttp3.OkHttpClient okHttpClient = new okhttp3.OkHttpClient.Builder()
+        return new okhttp3.OkHttpClient.Builder()
                 .addInterceptor(createInterceptor())
                 .build();
-
-        return okHttpClient;
     }
 
     private Interceptor createInterceptor() {
-        Interceptor interceptor = new Interceptor() {
+        return new Interceptor() {
             @Override
             public Response intercept(Chain chain) throws IOException {
                 Request request = chain.request().newBuilder()
@@ -30,7 +28,5 @@ public class OkHttpClient {
                 return chain.proceed(request);
             }
         };
-
-        return interceptor;
     }
 }

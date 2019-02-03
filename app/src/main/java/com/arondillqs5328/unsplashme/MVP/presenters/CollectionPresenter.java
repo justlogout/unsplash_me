@@ -24,7 +24,6 @@ public class CollectionPresenter extends BasePresenter implements CollectionCont
             isFirstLoading = false;
 
             mView.hideProgressBar();
-            mView.hideFooter();
 
             mView.showMoreCollection(collections);
             mView.updateQuery();
@@ -50,10 +49,8 @@ public class CollectionPresenter extends BasePresenter implements CollectionCont
                 }
             } else {
                 if (isNetworkConnection()) {
-                    mView.showFooter();
                     mRepository.loadMoreCollection(type, page, per_page);
                 } else {
-                    mView.hideFooter();
                 }
             }
         }

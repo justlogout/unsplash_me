@@ -1,5 +1,7 @@
 package com.arondillqs5328.unsplashme.MVP.models;
 
+import android.util.Log;
+
 import com.arondillqs5328.unsplashme.MVP.callbacks.NewPhotoCallback;
 import com.arondillqs5328.unsplashme.MVP.contracts.NewPhotoContract;
 import com.arondillqs5328.unsplashme.POJO.Photo;
@@ -30,11 +32,14 @@ public class NewPhotoRepository implements NewPhotoContract.Repository {
         call.enqueue(new Callback<List<Photo>>() {
             @Override
             public void onResponse(Call<List<Photo>> call, Response<List<Photo>> response) {
-                mCallback.onSuccess(response.body());
+                if (response.code() == 200) {
+                    mCallback.onSuccess(response.body());
+                }
             }
 
             @Override
             public void onFailure(Call<List<Photo>> call, Throwable t) {
+                Log.i("TAG_L", t.toString());
                 mCallback.onFailure();
             }
         });

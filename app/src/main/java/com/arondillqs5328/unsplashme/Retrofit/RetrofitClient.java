@@ -8,13 +8,10 @@ public class RetrofitClient {
     private final String API_BASE_URL = "https://api.unsplash.com";
 
     public Retrofit getRetrofitInstance() {
-        Retrofit retrofit = new Retrofit.Builder()
+        return new Retrofit.Builder()
                 .client(new OkHttpClient().getOkHttpClientInstance())
                 .baseUrl(API_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-
-        return retrofit;
     }
-
 }

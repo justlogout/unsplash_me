@@ -24,7 +24,6 @@ public class CuratedPhotoPresenter extends BasePresenter implements CuratedPhoto
             isFirstLoading = false;
 
             mView.hideProgressBar();
-            mView.hideFooter();
 
             mView.showMorePhoto(photos);
             mView.updateQuery();
@@ -50,10 +49,8 @@ public class CuratedPhotoPresenter extends BasePresenter implements CuratedPhoto
                 }
             } else {
                 if (isNetworkConnection()) {
-                    mView.showFooter();
                     mRepository.loadMoreCuratedPhoto(page, per_page, order_by);
                 } else {
-                    mView.hideFooter();
                 }
             }
         }

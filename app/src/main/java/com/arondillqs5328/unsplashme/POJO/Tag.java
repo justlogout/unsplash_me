@@ -9,4 +9,15 @@ public class Tag {
     @Expose
     public String title;
 
+    public Tag(String title) {
+        this.title = title;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 }
