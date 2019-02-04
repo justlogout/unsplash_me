@@ -13,4 +13,8 @@ public class BasePresenter {
     public boolean isNetworkConnection() {
         return true;
     }
+
+    public void setFirstLoading(boolean firstLoading) {
+        isFirstLoading = firstLoading;
+    }
 }

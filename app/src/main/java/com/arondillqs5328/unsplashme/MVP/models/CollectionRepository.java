@@ -50,7 +50,9 @@ public class CollectionRepository implements CollectionContract.Repository {
         call.enqueue(new Callback<List<Collection>>() {
             @Override
             public void onResponse(Call<List<Collection>> call, Response<List<Collection>> response) {
-                mCallback.onSuccess(response.body());
+                if (response.code() == 200) {
+                    mCallback.onSuccess(response.body());
+                }
             }
 
             @Override

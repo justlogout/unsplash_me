@@ -6,7 +6,9 @@ public interface SettingsContract {
 
     }
 
-    interface Presenter extends BaseContract.Presenter {
+    interface Presenter extends BaseContract {
+        void detachView();
+
         void onChangedPreference(String key, Object value);
     }
 

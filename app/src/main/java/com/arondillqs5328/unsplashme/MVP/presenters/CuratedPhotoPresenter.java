@@ -22,9 +22,7 @@ public class CuratedPhotoPresenter extends BasePresenter implements CuratedPhoto
     public void onSuccess(List<Photo> photos) {
         if (isViewReady(mView)) {
             isFirstLoading = false;
-
             mView.hideProgressBar();
-
             mView.showMorePhoto(photos);
             mView.updateQuery();
         }
@@ -38,22 +36,24 @@ public class CuratedPhotoPresenter extends BasePresenter implements CuratedPhoto
     @Override
     public void onLoadMorePhoto(int page, int per_page, String order_by) {
         if (isViewReady(mView)) {
-            if (isFirstLoading) {
-                if (isNetworkConnection()) {
+            if (isNetworkConnection()) {
+                if (isFirstLoading) {
                     mView.hideNoInternetConection();
                     mView.showProgressBar();
                     mRepository.loadMoreCuratedPhoto(page, per_page, order_by);
                 } else {
-                    mView.hideProgressBar();
-                    mView.showNoInternetConection();
+                    mRepository.loadMoreCuratedPhoto(page, per_page, order_by);
                 }
             } else {
-                if (isNetworkConnection()) {
-                    mRepository.loadMoreCuratedPhoto(page, per_page, order_by);
-                } else {
-                }
+                mView.hideProgressBar();
+                mView.showNoInternetConection();
             }
         }
+    }
+
+    @Override
+    public void onLoadFirst() {
+        setFirstLoading(true);
     }
 
     @Override

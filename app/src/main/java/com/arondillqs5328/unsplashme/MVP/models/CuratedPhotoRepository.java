@@ -30,7 +30,9 @@ public class CuratedPhotoRepository implements CuratedPhotoContract.Repository {
         call.enqueue(new Callback<List<Photo>>() {
             @Override
             public void onResponse(Call<List<Photo>> call, Response<List<Photo>> response) {
-                mCallback.onSuccess(response.body());
+                if (response.code() == 200) {
+                    mCallback.onSuccess(response.body());
+                }
             }
 
             @Override

@@ -15,6 +15,8 @@ public interface BaseContract {
     }
 
     interface Presenter {
+        void onLoadFirst();
+
         void detachView();
     }
 

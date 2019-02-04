@@ -41,7 +41,7 @@ public class NewPhotoFragment extends Fragment implements NewPhotoContract.View 
     private NewPhotoPresenter mPresenter;
 
     @BindView(R.id.new_recycler) RecyclerView mRecyclerView;
-    @BindView(R.id.progressBar) ProgressBar mProgressBar;
+    @BindView(R.id.new_progressBar) ProgressBar mProgressBar;
 
     public static NewPhotoFragment newInstance() {
         NewPhotoFragment fragment = new NewPhotoFragment();
@@ -98,16 +98,27 @@ public class NewPhotoFragment extends Fragment implements NewPhotoContract.View 
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.new_latest:
-                Toast.makeText(getContext(), "new latest", Toast.LENGTH_LONG).show();
+                updateOldQuery(UnsplashPhotoAPI.ORDER_BY_LATEST);
                 return true;
             case R.id.new_oldest:
-                Toast.makeText(getContext(), "new oldest", Toast.LENGTH_LONG).show();
+                updateOldQuery(UnsplashPhotoAPI.ORDER_BY_OLDEST);
                 return true;
             case R.id.new_popular:
-                Toast.makeText(getContext(), "new popular", Toast.LENGTH_LONG).show();
+                updateOldQuery(UnsplashPhotoAPI.ORDER_BY_POPULAR);
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void updateOldQuery(String order_by) {
+        page = 1;
+        per_page = 10;
+        this.order_by = order_by;
+        mPhotos.clear();
+        mRecyclerView.getAdapter().notifyDataSetChanged();
+
+        mPresenter.onLoadFirst();
+        mPresenter.onLoadMorePhoto(page, per_page, order_by);
     }
 
     @Override
@@ -125,7 +136,6 @@ public class NewPhotoFragment extends Fragment implements NewPhotoContract.View 
     public void hideProgressBar() {
         mProgressBar.setVisibility(View.GONE);
     }
-
 
     @Override
     public void showNoInternetConection() {

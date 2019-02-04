@@ -52,6 +52,11 @@ public class NewPhotoPresenter extends BasePresenter implements NewPhotoContract
     }
 
     @Override
+    public void onLoadFirst() {
+        setFirstLoading(true);
+    }
+
+    @Override
     public void detachView() {
         mView = null;
     }
