@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.arondillqs5328.unsplashme.ItemDecorator;
 import com.arondillqs5328.unsplashme.MVP.contracts.CollectionContract;
 import com.arondillqs5328.unsplashme.MVP.models.CollectionRepository;
 import com.arondillqs5328.unsplashme.MVP.presenters.CollectionPresenter;
@@ -33,12 +34,14 @@ import butterknife.ButterKnife;
 public class CollectionsPhotoFragment extends Fragment implements CollectionContract.View {
 
     @BindView(R.id.collection_recycler) RecyclerView mRecyclerView;
-    @BindView(R.id.collection_progressBar) ProgressBar mProgressBar;
+    @BindView(R.id.collection_progress_bar) ProgressBar mProgressBar;
+
     private boolean isLoading = true;
     private int page = 1;
     private int per_page = 10;
     private int type = 0;
     private List<Collection> mCollections = new ArrayList<>();
+
     private CollectionPresenter mPresenter;
 
     public static CollectionsPhotoFragment newInstance() {
@@ -59,11 +62,7 @@ public class CollectionsPhotoFragment extends Fragment implements CollectionCont
         View view = inflater.inflate(R.layout.fragment_collections_photo, container, false);
         ButterKnife.bind(this, view);
 
-        mPresenter = new CollectionPresenter(this,
-                new CollectionRepository(
-                        new RetrofitClient().getRetrofitInstance().create(UnsplashCollectionAPI.class)
-                )
-        );
+        mPresenter = new CollectionPresenter(this, new CollectionRepository(new RetrofitClient().getRetrofitInstance().create(UnsplashCollectionAPI.class)));
 
         initRecyclerView();
         mPresenter.onLoadMoreCollection(type, page, per_page);
@@ -73,7 +72,7 @@ public class CollectionsPhotoFragment extends Fragment implements CollectionCont
     private void initRecyclerView() {
         mRecyclerView.setHasFixedSize(false);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getContext(), RecyclerView.VERTICAL, false));
-        mRecyclerView.setAdapter(new CollectionAdaper(mCollections));
+        mRecyclerView.setAdapter(new CollectionAdaper(mCollections, new ItemDecorator()));
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {

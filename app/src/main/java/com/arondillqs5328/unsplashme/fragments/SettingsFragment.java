@@ -15,13 +15,13 @@ import androidx.preference.PreferenceFragmentCompat;
 
 public class SettingsFragment extends PreferenceFragmentCompat implements SettingsContract.View {
 
-    private SettingsContract.Presenter mPresenter;
-
     private ListPreference mLanguagePreference;
     private ListPreference mThemePreference;
     private ListPreference mLoadQualityPreference;
     private ListPreference mDownloadQualityPreference;
     private ListPreference mWallpaperQuality;
+
+    private SettingsContract.Presenter mPresenter;
 
     public static SettingsFragment newInstance() {
         SettingsFragment fragment = new SettingsFragment();
@@ -32,7 +32,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Settin
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.preferences);
 
-        mPresenter = new SettingsPresenter(this, new SettingsRepository(getActivity().getSharedPreferences(UnsplashMe.APP_PREFERENCES, Context.MODE_PRIVATE)));
+        mPresenter = new SettingsPresenter(this, new SettingsRepository(UnsplashMe.getInstance().getSharedPreferences(UnsplashMe.APP_PREFERENCES, Context.MODE_PRIVATE)));
 
         mLanguagePreference = findPreference(getString(R.string.language_key));
         mLanguagePreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {

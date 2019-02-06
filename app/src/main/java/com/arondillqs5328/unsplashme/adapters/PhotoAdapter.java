@@ -1,14 +1,13 @@
 package com.arondillqs5328.unsplashme.adapters;
 
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.arondillqs5328.unsplashme.ItemDecorator;
 import com.arondillqs5328.unsplashme.POJO.Photo;
-import com.arondillqs5328.unsplashme.PhotoDecorator;
 import com.arondillqs5328.unsplashme.R;
 import com.squareup.picasso.Picasso;
 
@@ -22,9 +21,11 @@ import butterknife.ButterKnife;
 public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHolder> {
 
     private List<Photo> mPhotos;
+    private ItemDecorator mDecorator;
 
-    public PhotoAdapter(List<Photo> photos) {
+    public PhotoAdapter(List<Photo> photos, ItemDecorator decorator) {
         mPhotos = photos;
+        mDecorator = decorator;
     }
 
     @NonNull
@@ -36,17 +37,15 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
 
     @Override
     public void onBindViewHolder(@NonNull PhotoViewHolder holder, int position) {
-        PhotoDecorator decorator = new PhotoDecorator(mPhotos.get(position).width, mPhotos.get(position).height);
-        String url = decorator.getPhotoUrl(mPhotos.get(position).urls);
-        ColorDrawable placeholder = new ColorDrawable(Color.parseColor(mPhotos.get(position).color));
+        holder.mAuthorTextView.setText(mDecorator.getAuthor(mPhotos.get(position).getUser()));
+        holder.mPhotoImageView.setMinimumHeight(mDecorator.getFinalHeight(mPhotos.get(position).getWidth(), mPhotos.get(position).getHeight()));
 
-        holder.mPhotoImageView.setMinimumHeight(decorator.getFinalHeight());
         Picasso.get()
-                .load(url)
-                .placeholder(placeholder)
-                .error(placeholder)
+                .load(mDecorator.getPhotoUrl(mPhotos.get(position).getUrls()))
+                .placeholder(mDecorator.getPlaceholder(mPhotos.get(position).getColor()))
+                .error(mDecorator.getPlaceholder(mPhotos.get(position).getColor()))
                 .centerCrop()
-                .resize(holder.mPhotoImageView.getMeasuredWidth(), decorator.getFinalHeight())
+                .resize(holder.mPhotoImageView.getMeasuredWidth(), mDecorator.getFinalHeight(mPhotos.get(position).getWidth(), mPhotos.get(position).getHeight()))
                 .into(holder.mPhotoImageView);
     }
 
@@ -57,7 +56,8 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
 
     class PhotoViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.photo_imageview) ImageView mPhotoImageView;
+        @BindView(R.id.photo_image_view) ImageView mPhotoImageView;
+        @BindView(R.id.author_text_view) TextView mAuthorTextView;
 
         public PhotoViewHolder(@NonNull View itemView) {
             super(itemView);

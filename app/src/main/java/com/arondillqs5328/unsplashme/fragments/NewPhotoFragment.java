@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.arondillqs5328.unsplashme.ItemDecorator;
 import com.arondillqs5328.unsplashme.MVP.contracts.NewPhotoContract;
 import com.arondillqs5328.unsplashme.MVP.models.NewPhotoRepository;
 import com.arondillqs5328.unsplashme.MVP.presenters.NewPhotoPresenter;
@@ -32,6 +33,9 @@ import butterknife.ButterKnife;
 
 public class NewPhotoFragment extends Fragment implements NewPhotoContract.View {
 
+    @BindView(R.id.new_recycler) RecyclerView mRecyclerView;
+    @BindView(R.id.new_progress_bar) ProgressBar mProgressBar;
+
     private boolean isLoading = true;
     private int page = 1;
     private int per_page = 10;
@@ -39,9 +43,6 @@ public class NewPhotoFragment extends Fragment implements NewPhotoContract.View 
     private List<Photo> mPhotos = new ArrayList<>();
 
     private NewPhotoPresenter mPresenter;
-
-    @BindView(R.id.new_recycler) RecyclerView mRecyclerView;
-    @BindView(R.id.new_progressBar) ProgressBar mProgressBar;
 
     public static NewPhotoFragment newInstance() {
         NewPhotoFragment fragment = new NewPhotoFragment();
@@ -61,11 +62,7 @@ public class NewPhotoFragment extends Fragment implements NewPhotoContract.View 
         View view = inflater.inflate(R.layout.fragment_new_photo, container, false);
         ButterKnife.bind(this, view);
 
-        mPresenter = new NewPhotoPresenter(this,
-                new NewPhotoRepository(
-                        new RetrofitClient().getRetrofitInstance().create(UnsplashPhotoAPI.class)
-                )
-        );
+        mPresenter = new NewPhotoPresenter(this, new NewPhotoRepository(new RetrofitClient().getRetrofitInstance().create(UnsplashPhotoAPI.class)));
 
         initRecyclerView();
         mPresenter.onLoadMorePhoto(page, per_page, order_by);
@@ -75,7 +72,7 @@ public class NewPhotoFragment extends Fragment implements NewPhotoContract.View 
     private void initRecyclerView() {
         mRecyclerView.setHasFixedSize(false);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getContext(), RecyclerView.VERTICAL, false));
-        mRecyclerView.setAdapter(new PhotoAdapter(mPhotos));
+        mRecyclerView.setAdapter(new PhotoAdapter(mPhotos, new ItemDecorator()));
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {

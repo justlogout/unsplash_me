@@ -1,17 +1,14 @@
 package com.arondillqs5328.unsplashme.adapters;
 
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.arondillqs5328.unsplashme.ItemDecorator;
 import com.arondillqs5328.unsplashme.POJO.Collection;
-import com.arondillqs5328.unsplashme.PhotoDecorator;
 import com.arondillqs5328.unsplashme.R;
-import com.arondillqs5328.unsplashme.UnsplashMe;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -24,9 +21,11 @@ import butterknife.ButterKnife;
 public class CollectionAdaper extends RecyclerView.Adapter<CollectionAdaper.CollectionViewHolder> {
 
     private List<Collection> mCollections;
+    private ItemDecorator mDecorator;
 
-    public CollectionAdaper(List<Collection> collections) {
+    public CollectionAdaper(List<Collection> collections, ItemDecorator decorator) {
         mCollections = collections;
+        mDecorator = decorator;
     }
 
     @NonNull
@@ -38,17 +37,13 @@ public class CollectionAdaper extends RecyclerView.Adapter<CollectionAdaper.Coll
 
     @Override
     public void onBindViewHolder(@NonNull CollectionViewHolder holder, int position) {
-        PhotoDecorator decorator = new PhotoDecorator();
-        String url = decorator.getPhotoUrl(mCollections.get(position).photo.urls);
-        ColorDrawable placeholder = new ColorDrawable(Color.parseColor(mCollections.get(position).photo.color));
-        String itemCount = "%d " + UnsplashMe.getInstance().getString(R.string.photos);
+        holder.mCollectionName.setText(mCollections.get(position).getTitle());
+        holder.mCollectionImageCount.setText(mDecorator.getTotalCount(mCollections.get(position).getTotalPhotos()));
 
-        holder.mCollectionName.setText(mCollections.get(position).title);
-        holder.mCollectionImageCount.setText(String.format(itemCount, mCollections.get(position).totalPhotos));
         Picasso.get()
-                .load(url)
-                .placeholder(placeholder)
-                .error(placeholder)
+                .load(mDecorator.getPhotoUrl(mCollections.get(position).getPhoto().getUrls()))
+                .placeholder(mDecorator.getPlaceholder(mCollections.get(position).getPhoto().getColor()))
+                .error(mDecorator.getPlaceholder(mCollections.get(position).getPhoto().getColor()))
                 .centerCrop()
                 .resize(holder.mCollectionPreview.getWidth(), holder.mCollectionPreview.getMaxHeight())
                 .into(holder.mCollectionPreview);
@@ -61,9 +56,9 @@ public class CollectionAdaper extends RecyclerView.Adapter<CollectionAdaper.Coll
 
     class CollectionViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.collection_preview_imageview) ImageView mCollectionPreview;
-        @BindView(R.id.collection_name_textView) TextView mCollectionName;
-        @BindView(R.id.total_photo_textView) TextView mCollectionImageCount;
+        @BindView(R.id.collection_preview_image_view) ImageView mCollectionPreview;
+        @BindView(R.id.collection_name_text_view) TextView mCollectionName;
+        @BindView(R.id.total_photo_text_view) TextView mCollectionImageCount;
 
         public CollectionViewHolder(@NonNull View itemView) {
             super(itemView);
