@@ -11,6 +11,10 @@ public class PhotoDecorator {
     private int width;
     private int height;
 
+    public PhotoDecorator() {
+
+    }
+
     public PhotoDecorator(int width, int height) {
         this.width = width;
         this.height = height;

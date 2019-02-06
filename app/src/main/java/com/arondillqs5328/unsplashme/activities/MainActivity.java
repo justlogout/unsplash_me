@@ -7,7 +7,7 @@ import android.view.MenuItem;
 import com.arondillqs5328.unsplashme.R;
 import com.arondillqs5328.unsplashme.adapters.PagerAdapter;
 import com.arondillqs5328.unsplashme.fragments.CollectionsPhotoFragment;
-import com.arondillqs5328.unsplashme.fragments.FeaturedPhotoFragment;
+import com.arondillqs5328.unsplashme.fragments.CuratedPhotoFragment;
 import com.arondillqs5328.unsplashme.fragments.NewPhotoFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
         PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager());
         pagerAdapter.addFragment(NewPhotoFragment.newInstance(), getString(R.string.tab_new));
-        pagerAdapter.addFragment(FeaturedPhotoFragment.newInstance(), getString(R.string.tab_featured));
+        pagerAdapter.addFragment(CuratedPhotoFragment.newInstance(), getString(R.string.tab_featured));
         pagerAdapter.addFragment(CollectionsPhotoFragment.newInstance(), getString(R.string.tab_collections));
 
         mViewPager.setAdapter(pagerAdapter);

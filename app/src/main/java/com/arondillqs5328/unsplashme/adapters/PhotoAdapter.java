@@ -40,14 +40,14 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
         String url = decorator.getPhotoUrl(mPhotos.get(position).urls);
         ColorDrawable placeholder = new ColorDrawable(Color.parseColor(mPhotos.get(position).color));
 
-        holder.mImageView.setMinimumHeight(decorator.getFinalHeight());
+        holder.mPhotoImageView.setMinimumHeight(decorator.getFinalHeight());
         Picasso.get()
                 .load(url)
                 .placeholder(placeholder)
                 .error(placeholder)
                 .centerCrop()
-                .resize(holder.mImageView.getMeasuredWidth(), decorator.getFinalHeight())
-                .into(holder.mImageView);
+                .resize(holder.mPhotoImageView.getMeasuredWidth(), decorator.getFinalHeight())
+                .into(holder.mPhotoImageView);
     }
 
     @Override
@@ -57,7 +57,7 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
 
     class PhotoViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.photo_imageview) ImageView mImageView;
+        @BindView(R.id.photo_imageview) ImageView mPhotoImageView;
 
         public PhotoViewHolder(@NonNull View itemView) {
             super(itemView);

@@ -30,7 +30,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class FeaturedPhotoFragment extends Fragment implements CuratedPhotoContract.View {
+public class CuratedPhotoFragment extends Fragment implements CuratedPhotoContract.View {
 
     @BindView(R.id.featured_recycler) RecyclerView mRecyclerView;
     @BindView(R.id.featured_progressBar) ProgressBar mProgressBar;
@@ -41,8 +41,8 @@ public class FeaturedPhotoFragment extends Fragment implements CuratedPhotoContr
     private List<Photo> mPhotos = new ArrayList<>();
     private CuratedPhotoPresenter mPresenter;
 
-    public static FeaturedPhotoFragment newInstance() {
-        FeaturedPhotoFragment fragment = new FeaturedPhotoFragment();
+    public static CuratedPhotoFragment newInstance() {
+        CuratedPhotoFragment fragment = new CuratedPhotoFragment();
         return fragment;
     }
 
