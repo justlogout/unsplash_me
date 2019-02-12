@@ -3,7 +3,7 @@ package com.arondillqs5328.unsplashme.MVP.contracts;
 public interface SettingsContract {
 
     interface View {
-
+        void restart();
     }
 
     interface Presenter {

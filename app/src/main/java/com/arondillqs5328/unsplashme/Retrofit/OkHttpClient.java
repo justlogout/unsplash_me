@@ -9,7 +9,7 @@ import okhttp3.Response;
 public class OkHttpClient {
 
     private final String API_HEADER = "Authorization";
-    private final String API_KEY = "";
+    private final String API_KEY = "Client-ID 7b68c267ba5e383941db64b802d989769684634fbff5490e4195a2c30587d09c";
 
     public okhttp3.OkHttpClient getOkHttpClientInstance() {
         return new okhttp3.OkHttpClient.Builder()

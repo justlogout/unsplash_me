@@ -1,6 +1,7 @@
 package com.arondillqs5328.unsplashme.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.arondillqs5328.unsplashme.MVP.contracts.SettingsContract;
@@ -8,7 +9,10 @@ import com.arondillqs5328.unsplashme.MVP.models.SettingsRepository;
 import com.arondillqs5328.unsplashme.MVP.presenters.SettingsPresenter;
 import com.arondillqs5328.unsplashme.R;
 import com.arondillqs5328.unsplashme.UnsplashMe;
+import com.arondillqs5328.unsplashme.activities.MainActivity;
+import com.arondillqs5328.unsplashme.activities.SettingsActivity;
 
+import androidx.core.app.TaskStackBuilder;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
@@ -84,5 +88,15 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Settin
     public void onDestroyView() {
         mPresenter.detachView();
         super.onDestroyView();
+    }
+
+    @Override
+    public void restart() {
+        TaskStackBuilder.create(getActivity())
+                .addNextIntent(new Intent(getActivity(), MainActivity.class))
+                .addNextIntent(new Intent(getActivity(), SettingsActivity.class))
+                .startActivities();
+        getActivity().overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+        getActivity().finish();
     }
 }

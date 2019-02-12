@@ -6,6 +6,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="DarkTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">#F34</item>
+        <item name="colorPrimaryDark">#F543</item>
+        <item name="colorAccent">#A31</item>
+    </style>
+
     <style name="SplashScreenStyle" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@drawable/background_splash_screen</item>
     </style>

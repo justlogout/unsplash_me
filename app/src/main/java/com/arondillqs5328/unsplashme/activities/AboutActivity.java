@@ -8,7 +8,7 @@ import com.arondillqs5328.unsplashme.R;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class AboutActivity extends AppCompatActivity {
+public class AboutActivity extends BaseActivity {
 
     public static Intent newIntent(Context context) {
         Intent intent = new Intent(context, AboutActivity.class);

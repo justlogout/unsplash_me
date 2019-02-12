@@ -19,12 +19,10 @@
         <ListPreference
             android:defaultValue="@string/default_theme"
             android:dialogTitle="@string/theme"
-            android:enabled="false"
             android:entries="@array/theme_entires"
             android:entryValues="@array/theme_values"
             android:key="@string/theme_key"
             android:negativeButtonText="@string/cancel"
-            android:summary="@string/coming_soon"
             android:title="@string/theme"
             app:iconSpaceReserved="false" />
     </PreferenceCategory>
