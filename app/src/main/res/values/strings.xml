@@ -15,6 +15,8 @@
     <string name="cancel">Cancel</string>
     <string name="coming_soon">Coming soon</string>
     <string name="photos">Photos</string>
+    <string name="download">Download</string>
+    <string name="set_wallpaper">Set as wallpaper</string>
 
     <!--START SETTINGS-->
 

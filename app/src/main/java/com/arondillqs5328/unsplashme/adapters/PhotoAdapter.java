@@ -1,5 +1,6 @@
 package com.arondillqs5328.unsplashme.adapters;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,8 @@ import android.widget.TextView;
 import com.arondillqs5328.unsplashme.ItemDecorator;
 import com.arondillqs5328.unsplashme.POJO.Photo;
 import com.arondillqs5328.unsplashme.R;
+import com.arondillqs5328.unsplashme.UnsplashMe;
+import com.arondillqs5328.unsplashme.activities.PhotoPreviewActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -36,7 +39,7 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PhotoViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final PhotoViewHolder holder, final int position) {
         holder.mAuthorTextView.setText(mDecorator.getAuthor(mPhotos.get(position).getUser()));
         holder.mPhotoImageView.setMinimumHeight(mDecorator.getFinalHeight(mPhotos.get(position).getWidth(), mPhotos.get(position).getHeight()));
 
@@ -47,6 +50,15 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
                 .centerCrop()
                 .resize(holder.mPhotoImageView.getMeasuredWidth(), mDecorator.getFinalHeight(mPhotos.get(position).getWidth(), mPhotos.get(position).getHeight()))
                 .into(holder.mPhotoImageView);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = PhotoPreviewActivity.newIntent(v.getContext());
+                UnsplashMe.sDefaultPhoto = mPhotos.get(position);
+                v.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
