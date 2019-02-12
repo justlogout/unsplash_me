@@ -8,7 +8,6 @@ import android.view.MenuItem;
 import com.arondillqs5328.unsplashme.R;
 import com.arondillqs5328.unsplashme.fragments.SettingsFragment;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
