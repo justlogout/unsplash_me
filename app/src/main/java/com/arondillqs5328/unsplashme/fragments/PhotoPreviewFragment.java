@@ -8,7 +8,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.arondillqs5328.unsplashme.ItemDecorator;
@@ -26,7 +25,6 @@ import butterknife.ButterKnife;
 public class PhotoPreviewFragment extends Fragment {
 
     @BindView(R.id.preview_photo) ImageView mPreviewPhoto;
-    @BindView(R.id.preview_author) TextView mPreviewAuthor;
 
     private Photo mPhoto;
     private ItemDecorator mDecorator = new ItemDecorator();
@@ -53,15 +51,10 @@ public class PhotoPreviewFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_photo_preview, container, false);
         ButterKnife.bind(this, view);
 
-        mPreviewAuthor.setText(mDecorator.getAuthor(mPhoto.getUser()));
-        mPreviewPhoto.setMinimumHeight(mDecorator.getFinalHeight(mPhoto.getWidth(), mPhoto.getHeight()));
-
         Picasso.get()
                 .load(mDecorator.getPhotoUrl(mPhoto.getUrls()))
                 .placeholder(mDecorator.getPlaceholder(mPhoto.getColor()))
                 .error(mDecorator.getPlaceholder(mPhoto.getColor()))
-                .centerCrop()
-                .resize(mPreviewPhoto.getMeasuredWidth(), mDecorator.getFinalHeight(mPhoto.getWidth(), mPhoto.getHeight()))
                 .into(mPreviewPhoto);
 
         return view;
@@ -88,5 +81,4 @@ public class PhotoPreviewFragment extends Fragment {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }
