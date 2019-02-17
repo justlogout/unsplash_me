@@ -1,5 +1,6 @@
 package com.arondillqs5328.unsplashme.adapters;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,8 @@ import android.widget.TextView;
 import com.arondillqs5328.unsplashme.ItemDecorator;
 import com.arondillqs5328.unsplashme.POJO.Collection;
 import com.arondillqs5328.unsplashme.R;
+import com.arondillqs5328.unsplashme.UnsplashMe;
+import com.arondillqs5328.unsplashme.activities.CollectionPreviewActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -18,12 +21,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class CollectionAdaper extends RecyclerView.Adapter<CollectionAdaper.CollectionViewHolder> {
+public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.CollectionViewHolder> {
 
     private List<Collection> mCollections;
     private ItemDecorator mDecorator;
 
-    public CollectionAdaper(List<Collection> collections, ItemDecorator decorator) {
+    public CollectionAdapter(List<Collection> collections, ItemDecorator decorator) {
         mCollections = collections;
         mDecorator = decorator;
     }
@@ -36,7 +39,7 @@ public class CollectionAdaper extends RecyclerView.Adapter<CollectionAdaper.Coll
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CollectionViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CollectionViewHolder holder, final int position) {
         holder.mCollectionName.setText(mCollections.get(position).getTitle());
         holder.mCollectionImageCount.setText(mDecorator.getTotalCount(mCollections.get(position).getTotalPhotos()));
 
@@ -47,6 +50,15 @@ public class CollectionAdaper extends RecyclerView.Adapter<CollectionAdaper.Coll
                 .centerCrop()
                 .resize(holder.mCollectionPreview.getWidth(), holder.mCollectionPreview.getMaxHeight())
                 .into(holder.mCollectionPreview);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = CollectionPreviewActivity.newIntent(v.getContext());
+                UnsplashMe.sDefaultCollection = mCollections.get(position);
+                v.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override

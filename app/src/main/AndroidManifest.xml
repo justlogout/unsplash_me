@@ -3,6 +3,7 @@
     package="com.arondillqs5328.unsplashme">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".UnsplashMe"
@@ -36,7 +37,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.CollectionPreviewActivity"
-            android:label="" />
+            android:label=""
+            android:parentActivityName=".activities.MainActivity" />
         <activity
             android:name=".activities.PhotoPreviewActivity"
             android:label="" />

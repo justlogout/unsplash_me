@@ -19,10 +19,12 @@
         <ListPreference
             android:defaultValue="@string/default_theme"
             android:dialogTitle="@string/theme"
+            android:enabled="false"
             android:entries="@array/theme_entires"
             android:entryValues="@array/theme_values"
             android:key="@string/theme_key"
             android:negativeButtonText="@string/cancel"
+            android:summary="@string/coming_soon"
             android:title="@string/theme"
             app:iconSpaceReserved="false" />
     </PreferenceCategory>
@@ -50,17 +52,6 @@
             android:negativeButtonText="@string/cancel"
             android:summary="@string/download_quality_subtitle"
             android:title="@string/download_quality"
-            app:iconSpaceReserved="false" />
-
-        <ListPreference
-            android:defaultValue="@string/default_wallpaper_quality"
-            android:dialogTitle="@string/wallpaper_quality"
-            android:entries="@array/wallpaper_quality_entires"
-            android:entryValues="@array/wallpaper_quality_values"
-            android:key="@string/wallpaper_quality_key"
-            android:negativeButtonText="@string/cancel"
-            android:summary="@string/wallpaper_quality_subtitle"
-            android:title="@string/wallpaper_quality"
             app:iconSpaceReserved="false" />
     </PreferenceCategory>
 </PreferenceScreen>

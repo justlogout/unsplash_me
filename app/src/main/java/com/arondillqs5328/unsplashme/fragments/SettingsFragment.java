@@ -23,7 +23,6 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Settin
     private ListPreference mThemePreference;
     private ListPreference mLoadQualityPreference;
     private ListPreference mDownloadQualityPreference;
-    private ListPreference mWallpaperQuality;
 
     private SettingsContract.Presenter mPresenter;
 
@@ -70,15 +69,6 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Settin
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 mPresenter.onChangedPreference(mDownloadQualityPreference.getKey(), newValue);
-                return true;
-            }
-        });
-
-        mWallpaperQuality = findPreference(getString(R.string.wallpaper_quality_key));
-        mWallpaperQuality.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object newValue) {
-                mPresenter.onChangedPreference(mWallpaperQuality.getKey(), newValue);
                 return true;
             }
         });

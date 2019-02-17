@@ -14,7 +14,10 @@ import com.arondillqs5328.unsplashme.ItemDecorator;
 import com.arondillqs5328.unsplashme.POJO.Photo;
 import com.arondillqs5328.unsplashme.R;
 import com.arondillqs5328.unsplashme.UnsplashMe;
+import com.arondillqs5328.unsplashme.helpers.DownloadHelper;
 import com.squareup.picasso.Picasso;
+
+import java.util.UUID;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -71,14 +74,22 @@ public class PhotoPreviewFragment extends Fragment {
         switch (item.getItemId()) {
             case R.id.download:
                 Toast.makeText(getContext(), "Download", Toast.LENGTH_LONG).show();
-                return true;
-            case R.id.set_wallpaper:
-                Toast.makeText(getContext(), "set wallpaper", Toast.LENGTH_LONG).show();
+                saveImage();
                 return true;
             case android.R.id.home:
                 getActivity().onBackPressed();
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void saveImage() {
+        String fileName = UUID.randomUUID().toString() + ".png";
+        Picasso.get()
+                .load(DownloadHelper.getUrl(UnsplashMe.sDefaultPhoto.getUrls()))
+                .into(new DownloadHelper(getContext(),
+                        UnsplashMe.getInstance().getContentResolver(),
+                        fileName,
+                        fileName));
     }
 }

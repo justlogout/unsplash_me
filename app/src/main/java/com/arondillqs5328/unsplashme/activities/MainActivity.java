@@ -106,11 +106,6 @@ public class MainActivity extends BaseActivity {
                         intent = SettingsActivity.newIntent(getApplicationContext());
                         startActivity(intent);
                         return true;
-                    case R.id.nav_about:
-                        mDrawerLayout.closeDrawer(GravityCompat.START);
-                        intent = AboutActivity.newIntent(getApplicationContext());
-                        startActivity(intent);
-                        return true;
                 }
                 return true;
             }

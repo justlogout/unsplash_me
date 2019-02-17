@@ -9,8 +9,9 @@
 
     <style name="DarkTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">#F34</item>
-        <item name="colorPrimaryDark">#F543</item>
-        <item name="colorAccent">#A31</item>
+        <item name="colorPrimaryDark">#F34</item>
+        <item name="colorAccent">#F34</item>
+        <item name="android:windowTranslucentStatus">true</item>
     </style>
 
     <style name="SplashScreenStyle" parent="Theme.AppCompat.NoActionBar">

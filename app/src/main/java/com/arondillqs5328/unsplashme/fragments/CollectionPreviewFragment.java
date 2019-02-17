@@ -2,8 +2,6 @@ package com.arondillqs5328.unsplashme.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,13 +9,14 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.arondillqs5328.unsplashme.ItemDecorator;
-import com.arondillqs5328.unsplashme.MVP.contracts.CollectionContract;
-import com.arondillqs5328.unsplashme.MVP.models.CollectionRepository;
-import com.arondillqs5328.unsplashme.MVP.presenters.CollectionPresenter;
-import com.arondillqs5328.unsplashme.POJO.Collection;
+import com.arondillqs5328.unsplashme.MVP.contracts.CollectionPreviewContract;
+import com.arondillqs5328.unsplashme.MVP.models.CollectionPreviewRepository;
+import com.arondillqs5328.unsplashme.MVP.presenters.CollectionPreviewPresenter;
+import com.arondillqs5328.unsplashme.POJO.Photo;
 import com.arondillqs5328.unsplashme.R;
 import com.arondillqs5328.unsplashme.Retrofit.RetrofitClient;
-import com.arondillqs5328.unsplashme.adapters.CollectionAdapter;
+import com.arondillqs5328.unsplashme.UnsplashMe;
+import com.arondillqs5328.unsplashme.adapters.PhotoAdapter;
 import com.arondillqs5328.unsplashme.endpoints.UnsplashCollectionAPI;
 
 import java.util.ArrayList;
@@ -31,54 +30,58 @@ import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class CollectionsPhotoFragment extends Fragment implements CollectionContract.View {
+public class CollectionPreviewFragment extends Fragment implements CollectionPreviewContract.View {
 
-    @BindView(R.id.collection_recycler) RecyclerView mRecyclerView;
-    @BindView(R.id.collection_progress_bar) ProgressBar mProgressBar;
+    @BindView(R.id.collection_preview_recycler_view) RecyclerView mRecyclerView;
+    @BindView(R.id.collection_preview_progress_bar) ProgressBar mProgressBar;
 
     private boolean isLoading = true;
+    private int id;
     private int page = 1;
     private int per_page = 10;
-    private int type = 0;
-    private List<Collection> mCollections = new ArrayList<>();
+    private List<Photo> mPhotos = new ArrayList<>();
 
-    private CollectionPresenter mPresenter;
+    private CollectionPreviewPresenter mPresenter;
 
-    public static CollectionsPhotoFragment newInstance() {
-        CollectionsPhotoFragment fragment = new CollectionsPhotoFragment();
+    public static CollectionPreviewFragment newInstance() {
+        CollectionPreviewFragment fragment = new CollectionPreviewFragment();
         return fragment;
+    }
+
+    public CollectionPreviewFragment() {
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         setHasOptionsMenu(true);
         super.onCreate(savedInstanceState);
+        id = UnsplashMe.sDefaultCollection.getId();
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         setRetainInstance(true);
-        View view = inflater.inflate(R.layout.fragment_collections_photo, container, false);
+        View view = inflater.inflate(R.layout.fragment_collection_preview, container, false);
         ButterKnife.bind(this, view);
 
-        mPresenter = new CollectionPresenter(this, new CollectionRepository(new RetrofitClient().getRetrofitInstance().create(UnsplashCollectionAPI.class)));
+        mPresenter = new CollectionPreviewPresenter(this, new CollectionPreviewRepository(new RetrofitClient().getRetrofitInstance().create(UnsplashCollectionAPI.class)));
 
         initRecyclerView();
-        mPresenter.onLoadMoreCollection(type, page, per_page);
+        mPresenter.onLoadMorePhoto(id, page, per_page);
         return view;
     }
 
     private void initRecyclerView() {
         mRecyclerView.setHasFixedSize(false);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getContext(), RecyclerView.VERTICAL, false));
-        mRecyclerView.setAdapter(new CollectionAdapter(mCollections, new ItemDecorator()));
+        mRecyclerView.setAdapter(new PhotoAdapter(mPhotos, new ItemDecorator()));
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 if (isLoading && ((LinearLayoutManager) mRecyclerView.getLayoutManager()).findLastVisibleItemPosition() == mRecyclerView.getLayoutManager().getItemCount() - 1) {
-                    mPresenter.onLoadMoreCollection(type, page, per_page);
+                    mPresenter.onLoadMorePhoto(id, page, per_page);
                     isLoading = false;
                 }
             }
@@ -86,41 +89,18 @@ public class CollectionsPhotoFragment extends Fragment implements CollectionCont
     }
 
     @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.collections_photo_menu, menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.collections_all:
-                updateOldQuery(0);
-                return true;
-            case R.id.collections_curated:
-                updateOldQuery(1);
-                return true;
-            case R.id.collections_featured:
-                updateOldQuery(2);
+            case android.R.id.home:
+                getActivity().onBackPressed();
                 return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    private void updateOldQuery(int type) {
-        page = 1;
-        per_page = 10;
-        this.type = type;
-        mCollections.clear();
-        mRecyclerView.getAdapter().notifyDataSetChanged();
-
-        mPresenter.onLoadFirst();
-        mPresenter.onLoadMoreCollection(type, page, per_page);
-    }
-
     @Override
-    public void showMoreCollection(List<Collection> collections) {
-        mCollections.addAll(collections);
+    public void showMorePhoto(List<Photo> photos) {
+        mPhotos.addAll(photos);
         mRecyclerView.getAdapter().notifyDataSetChanged();
     }
 
