@@ -44,7 +44,7 @@ public class NewPhotoFragment extends Fragment implements NewPhotoContract.View 
 
     private NewPhotoPresenter mPresenter;
 
-    public static NewPhotoFragment newInstance() {
+    public static NewPhotoFragment getInstance() {
         NewPhotoFragment fragment = new NewPhotoFragment();
         return fragment;
     }
@@ -67,6 +67,12 @@ public class NewPhotoFragment extends Fragment implements NewPhotoContract.View 
         initRecyclerView();
         mPresenter.onLoadMorePhoto(page, per_page, order_by);
         return view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        mPresenter.detachView();
+        super.onDestroyView();
     }
 
     private void initRecyclerView() {

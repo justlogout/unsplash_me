@@ -30,7 +30,7 @@ public class SettingsActivity extends BaseActivity {
         setUpToolbar();
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.setting_frame, SettingsFragment.newInstance())
+                .replace(R.id.setting_frame, SettingsFragment.getInstance())
                 .commit();
     }
 

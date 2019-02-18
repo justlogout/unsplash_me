@@ -7,55 +7,55 @@ public class User {
 
     @SerializedName("id")
     @Expose
-    public String id;
+    private String id;
     @SerializedName("updated_at")
     @Expose
-    public String updatedAt;
+    private String updatedAt;
     @SerializedName("username")
     @Expose
-    public String username;
+    private String username;
     @SerializedName("name")
     @Expose
     public String name;
     @SerializedName("first_name")
     @Expose
-    public String firstName;
+    private String firstName;
     @SerializedName("last_name")
     @Expose
-    public String lastName;
+    private String lastName;
     @SerializedName("twitter_username")
     @Expose
-    public String twitterUsername;
+    private String twitterUsername;
     @SerializedName("portfolio_url")
     @Expose
-    public String portfolioUrl;
+    private String portfolioUrl;
     @SerializedName("bio")
     @Expose
-    public String bio;
+    private String bio;
     @SerializedName("location")
     @Expose
-    public String location;
+    private String location;
     @SerializedName("links")
     @Expose
-    public UserLinks links;
+    private UserLinks links;
     @SerializedName("profile_image")
     @Expose
-    public ProfileImage profileImage;
+    private ProfileImage profileImage;
     @SerializedName("instagram_username")
     @Expose
-    public String instagramUsername;
+    private String instagramUsername;
     @SerializedName("total_collections")
     @Expose
-    public int totalCollections;
+    private int totalCollections;
     @SerializedName("total_likes")
     @Expose
-    public int totalLikes;
+    private int totalLikes;
     @SerializedName("total_photos")
     @Expose
-    public int totalPhotos;
+    private int totalPhotos;
     @SerializedName("accepted_tos")
     @Expose
-    public boolean acceptedTos;
+    private boolean acceptedTos;
 
     public User(String id, String updatedAt, String username, String name, String firstName,
                 String lastName, String twitterUsername, String portfolioUrl, String bio,

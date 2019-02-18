@@ -1,35 +1,21 @@
 package com.arondillqs5328.unsplashme.helpers;
 
-import android.content.ContentResolver;
+import android.app.DownloadManager;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.provider.MediaStore;
-import android.widget.Toast;
+import android.net.Uri;
+import android.os.Environment;
 
 import com.arondillqs5328.unsplashme.POJO.Urls;
 import com.arondillqs5328.unsplashme.R;
 import com.arondillqs5328.unsplashme.UnsplashMe;
-import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
 
-import java.lang.ref.WeakReference;
+import java.util.UUID;
 
-public class DownloadHelper implements Target {
+public class DownloadHelper {
 
-    private Context context;
-    private WeakReference<ContentResolver> contentResolverWeakReference;
-    private String name;
-    private String desc;
-
-    public DownloadHelper(Context context, ContentResolver contentResolver, String name, String desc) {
-        this.context = context;
-        this.contentResolverWeakReference = new WeakReference<>(contentResolver);
-        this.name = name;
-        this.desc = desc;
+    public DownloadHelper() {
     }
-
 
     public static String getUrl(Urls urls) {
         SharedPreferences preferences = UnsplashMe.getInstance().getSharedPreferences(UnsplashMe.APP_PREFERENCES, Context.MODE_PRIVATE);
@@ -55,22 +41,19 @@ public class DownloadHelper implements Target {
         return url;
     }
 
-    @Override
-    public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-        ContentResolver contentResolver = contentResolverWeakReference.get();
-        if (contentResolver != null) {
-            MediaStore.Images.Media.insertImage(contentResolver, bitmap, name, desc);
-        }
-        Toast.makeText(context, "Download succeed", Toast.LENGTH_LONG).show();
-    }
+    public void download(Context context) {
+        String fileName = UUID.randomUUID().toString() + ".jpg";
 
-    @Override
-    public void onBitmapFailed(Exception e, Drawable errorDrawable) {
+        DownloadManager downloadmanager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
+        Uri uri = Uri.parse(DownloadHelper.getUrl(UnsplashMe.sDefaultPhoto.getUrls()));
 
-    }
+        DownloadManager.Request request = new DownloadManager.Request(uri);
+        request.setTitle("Walls");
+        request.setDescription("Downloading");
+        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+        request.setVisibleInDownloadsUi(false);
+        request.setDestinationUri(Uri.parse("file://" + Environment.getExternalStorageDirectory() + "/Pictures/Walls/" + fileName));
 
-    @Override
-    public void onPrepareLoad(Drawable placeHolderDrawable) {
-
+        downloadmanager.enqueue(request);
     }
 }

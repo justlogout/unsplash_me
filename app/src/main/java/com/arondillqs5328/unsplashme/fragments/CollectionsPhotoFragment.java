@@ -44,7 +44,7 @@ public class CollectionsPhotoFragment extends Fragment implements CollectionCont
 
     private CollectionPresenter mPresenter;
 
-    public static CollectionsPhotoFragment newInstance() {
+    public static CollectionsPhotoFragment getInstance() {
         CollectionsPhotoFragment fragment = new CollectionsPhotoFragment();
         return fragment;
     }
@@ -67,6 +67,12 @@ public class CollectionsPhotoFragment extends Fragment implements CollectionCont
         initRecyclerView();
         mPresenter.onLoadMoreCollection(type, page, per_page);
         return view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        mPresenter.detachView();
+        super.onDestroyView();
     }
 
     private void initRecyclerView() {

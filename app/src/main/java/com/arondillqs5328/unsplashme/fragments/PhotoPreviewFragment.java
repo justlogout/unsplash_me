@@ -8,7 +8,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.arondillqs5328.unsplashme.ItemDecorator;
 import com.arondillqs5328.unsplashme.POJO.Photo;
@@ -16,8 +15,6 @@ import com.arondillqs5328.unsplashme.R;
 import com.arondillqs5328.unsplashme.UnsplashMe;
 import com.arondillqs5328.unsplashme.helpers.DownloadHelper;
 import com.squareup.picasso.Picasso;
-
-import java.util.UUID;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -32,7 +29,7 @@ public class PhotoPreviewFragment extends Fragment {
     private Photo mPhoto;
     private ItemDecorator mDecorator = new ItemDecorator();
 
-    public static PhotoPreviewFragment newInstance() {
+    public static PhotoPreviewFragment getInstance() {
         PhotoPreviewFragment fragment = new PhotoPreviewFragment();
         return fragment;
     }
@@ -73,8 +70,7 @@ public class PhotoPreviewFragment extends Fragment {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.download:
-                Toast.makeText(getContext(), "Download", Toast.LENGTH_LONG).show();
-                saveImage();
+                new DownloadHelper().download(getActivity());
                 return true;
             case android.R.id.home:
                 getActivity().onBackPressed();
@@ -83,13 +79,4 @@ public class PhotoPreviewFragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
-    private void saveImage() {
-        String fileName = UUID.randomUUID().toString() + ".png";
-        Picasso.get()
-                .load(DownloadHelper.getUrl(UnsplashMe.sDefaultPhoto.getUrls()))
-                .into(new DownloadHelper(getContext(),
-                        UnsplashMe.getInstance().getContentResolver(),
-                        fileName,
-                        fileName));
-    }
 }

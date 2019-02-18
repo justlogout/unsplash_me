@@ -9,49 +9,49 @@ public class Collection {
 
     @SerializedName("id")
     @Expose
-    public int id;
+    private int id;
     @SerializedName("title")
     @Expose
-    public String title;
+    private String title;
     @SerializedName("description")
     @Expose
-    public String description;
+    private String description;
     @SerializedName("published_at")
     @Expose
-    public String publishedAt;
+    private String publishedAt;
     @SerializedName("updated_at")
     @Expose
-    public String updatedAt;
+    private String updatedAt;
     @SerializedName("curated")
     @Expose
-    public boolean curated;
+    private boolean curated;
     @SerializedName("featured")
     @Expose
-    public boolean featured;
+    private boolean featured;
     @SerializedName("total_photos")
     @Expose
-    public int totalPhotos;
+    private int totalPhotos;
     @SerializedName("private")
     @Expose
-    public boolean _private;
+    private boolean _private;
     @SerializedName("share_key")
     @Expose
-    public String shareKey;
+    private String shareKey;
     @SerializedName("tags")
     @Expose
-    public List<Tag> tags;
+    private List<Tag> tags;
     @SerializedName("cover_photo")
     @Expose
-    public Photo photo;
+    private Photo photo;
     @SerializedName("preview_photos")
     @Expose
-    public List<PreviewPhoto> previewPhotos;
+    private List<PreviewPhoto> previewPhotos;
     @SerializedName("user")
     @Expose
-    public User user;
+    private User user;
     @SerializedName("links")
     @Expose
-    public CollectionLinks links;
+    private CollectionLinks links;
 
     public Collection(int id, String title, String description, String publishedAt,
                       String updatedAt, boolean curated, boolean featured, int totalPhotos,

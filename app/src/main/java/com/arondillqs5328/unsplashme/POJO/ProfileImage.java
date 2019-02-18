@@ -7,13 +7,13 @@ public class ProfileImage {
 
     @SerializedName("small")
     @Expose
-    public String small;
+    private String small;
     @SerializedName("medium")
     @Expose
-    public String medium;
+    private String medium;
     @SerializedName("large")
     @Expose
-    public String large;
+    private String large;
 
     public ProfileImage(String small, String medium, String large) {
         this.small = small;

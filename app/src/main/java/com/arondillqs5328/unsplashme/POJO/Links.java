@@ -7,16 +7,16 @@ public class Links {
 
     @SerializedName("self")
     @Expose
-    public String self;
+    private String self;
     @SerializedName("html")
     @Expose
-    public String html;
+    private String html;
     @SerializedName("download")
     @Expose
-    public String download;
+    private String download;
     @SerializedName("download_location")
     @Expose
-    public String downloadLocation;
+    private String downloadLocation;
 
     public Links(String self, String html, String download, String downloadLocation) {
         this.self = self;

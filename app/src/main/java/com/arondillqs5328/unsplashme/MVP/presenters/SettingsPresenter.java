@@ -26,7 +26,7 @@ public class SettingsPresenter implements SettingsContract.Presenter, SettingsCa
     }
 
     @Override
-    public void onPreferenceChanged(String preference) {
+    public void onSuccessChanged(String preference) {
         switch (preference) {
             case "Language":
                 if (isViewReady()) {

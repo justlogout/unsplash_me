@@ -9,59 +9,58 @@ public class Photo {
 
     @SerializedName("id")
     @Expose
-    public String id;
+    private String id;
     @SerializedName("created_at")
     @Expose
-    public String createdAt;
+    private String createdAt;
     @SerializedName("updated_at")
     @Expose
-    public String updatedAt;
+    private String updatedAt;
     @SerializedName("width")
     @Expose
-    public int width;
+    private int width;
     @SerializedName("height")
     @Expose
-    public int height;
+    private int height;
     @SerializedName("color")
     @Expose
-    public String color;
+    private String color;
     @SerializedName("description")
     @Expose
-    public String description;
+    private String description;
     @SerializedName("urls")
     @Expose
-    public Urls urls;
+    private Urls urls;
     @SerializedName("links")
     @Expose
-    public Links links;
+    private Links links;
     @SerializedName("categories")
     @Expose
-    public List<Object> categories;
+    private List<Object> categories;
     @SerializedName("sponsored")
     @Expose
-    public boolean sponsored;
+    private boolean sponsored;
     @SerializedName("sponsored_by")
     @Expose
-    public Object sponsoredBy;
+    private Object sponsoredBy;
     @SerializedName("sponsored_impressions_id")
     @Expose
-    public Object sponsoredImpressionsId;
+    private Object sponsoredImpressionsId;
     @SerializedName("likes")
     @Expose
-    public int likes;
+    private int likes;
     @SerializedName("liked_by_user")
     @Expose
-    public boolean likedByUser;
+    private boolean likedByUser;
     @SerializedName("current_user_collections")
     @Expose
-    public List<Object> currentUserCollections;
+    private List<Object> currentUserCollections;
     @SerializedName("slug")
     @Expose
-    public String slug;
+    private String slug;
     @SerializedName("user")
     @Expose
-    public User user;
-
+    private User user;
 
     public Photo(String id, String createdAt, String updatedAt, int width, int height,
                  String color, String description, Urls urls, Links links, List<Object> categories,

@@ -7,10 +7,10 @@ public class PreviewPhoto {
 
     @SerializedName("id")
     @Expose
-    public String id;
+    private String id;
     @SerializedName("urls")
     @Expose
-    public Urls urls;
+    private Urls urls;
 
     public PreviewPhoto(String id, Urls urls) {
         this.id = id;

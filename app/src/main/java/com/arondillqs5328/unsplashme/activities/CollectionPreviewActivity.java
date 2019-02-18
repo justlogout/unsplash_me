@@ -7,7 +7,6 @@ import android.os.Bundle;
 import com.arondillqs5328.unsplashme.R;
 import com.arondillqs5328.unsplashme.fragments.CollectionPreviewFragment;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,7 +29,7 @@ public class CollectionPreviewActivity extends BaseActivity {
         setUpToolbar();
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.collection_preview_frame, CollectionPreviewFragment.newInstance())
+                .replace(R.id.collection_preview_frame, CollectionPreviewFragment.getInstance())
                 .commit();
     }
 

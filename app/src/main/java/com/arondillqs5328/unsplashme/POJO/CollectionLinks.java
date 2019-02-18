@@ -7,16 +7,16 @@ public class CollectionLinks {
 
     @SerializedName("self")
     @Expose
-    public String self;
+    private String self;
     @SerializedName("html")
     @Expose
-    public String html;
+    private String html;
     @SerializedName("photos")
     @Expose
-    public String photos;
+    private String photos;
     @SerializedName("related")
     @Expose
-    public String related;
+    private String related;
 
     public CollectionLinks(String self, String html, String photos, String related) {
         this.self = self;

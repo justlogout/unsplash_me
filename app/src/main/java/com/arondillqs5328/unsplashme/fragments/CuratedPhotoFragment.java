@@ -44,7 +44,7 @@ public class CuratedPhotoFragment extends Fragment implements CuratedPhotoContra
 
     private CuratedPhotoPresenter mPresenter;
 
-    public static CuratedPhotoFragment newInstance() {
+    public static CuratedPhotoFragment getInstance() {
         CuratedPhotoFragment fragment = new CuratedPhotoFragment();
         return fragment;
     }
@@ -67,6 +67,12 @@ public class CuratedPhotoFragment extends Fragment implements CuratedPhotoContra
         initRecyclerView();
         mPresenter.onLoadMorePhoto(page, per_page, order_by);
         return view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        mPresenter.detachView();
+        super.onDestroyView();
     }
 
     private void initRecyclerView() {

@@ -7,7 +7,7 @@ public class Tag {
 
     @SerializedName("title")
     @Expose
-    public String title;
+    private String title;
 
     public Tag(String title) {
         this.title = title;

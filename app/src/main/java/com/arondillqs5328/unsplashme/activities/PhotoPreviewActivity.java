@@ -29,7 +29,7 @@ public class PhotoPreviewActivity extends BaseActivity {
         setUpToolbar();
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.preview_frame, PhotoPreviewFragment.newInstance())
+                .replace(R.id.preview_frame, PhotoPreviewFragment.getInstance())
                 .commit();
     }
 

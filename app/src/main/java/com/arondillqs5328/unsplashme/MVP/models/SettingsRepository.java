@@ -26,10 +26,10 @@ public class SettingsRepository implements SettingsContract.Repository {
 
         switch (key) {
             case "Language":
-                mCallback.onPreferenceChanged("Language");
+                mCallback.onSuccessChanged("Language");
                 break;
             case "Theme":
-                mCallback.onPreferenceChanged("Theme");
+                mCallback.onSuccessChanged("Theme");
                 break;
         }
     }

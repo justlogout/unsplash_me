@@ -43,7 +43,7 @@ public class CollectionPreviewFragment extends Fragment implements CollectionPre
 
     private CollectionPreviewPresenter mPresenter;
 
-    public static CollectionPreviewFragment newInstance() {
+    public static CollectionPreviewFragment getInstance() {
         CollectionPreviewFragment fragment = new CollectionPreviewFragment();
         return fragment;
     }
@@ -70,6 +70,12 @@ public class CollectionPreviewFragment extends Fragment implements CollectionPre
         initRecyclerView();
         mPresenter.onLoadMorePhoto(id, page, per_page);
         return view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        mPresenter.detachView();
+        super.onDestroyView();
     }
 
     private void initRecyclerView() {

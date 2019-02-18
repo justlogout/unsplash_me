@@ -24,9 +24,9 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Settin
     private ListPreference mLoadQualityPreference;
     private ListPreference mDownloadQualityPreference;
 
-    private SettingsContract.Presenter mPresenter;
+    private SettingsPresenter mPresenter;
 
-    public static SettingsFragment newInstance() {
+    public static SettingsFragment getInstance() {
         SettingsFragment fragment = new SettingsFragment();
         return fragment;
     }

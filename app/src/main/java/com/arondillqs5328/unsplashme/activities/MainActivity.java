@@ -49,9 +49,9 @@ public class MainActivity extends BaseActivity {
         mTabLayout.setupWithViewPager(mViewPager);
 
         PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager());
-        pagerAdapter.addFragment(NewPhotoFragment.newInstance(), getString(R.string.tab_new));
-        pagerAdapter.addFragment(CuratedPhotoFragment.newInstance(), getString(R.string.tab_featured));
-        pagerAdapter.addFragment(CollectionsPhotoFragment.newInstance(), getString(R.string.tab_collections));
+        pagerAdapter.addFragment(NewPhotoFragment.getInstance(), getString(R.string.tab_new));
+        pagerAdapter.addFragment(CuratedPhotoFragment.getInstance(), getString(R.string.tab_featured));
+        pagerAdapter.addFragment(CollectionsPhotoFragment.getInstance(), getString(R.string.tab_collections));
 
         mViewPager.setAdapter(pagerAdapter);
         mViewPager.setOffscreenPageLimit(2);
