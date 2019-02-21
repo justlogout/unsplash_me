@@ -6,7 +6,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.arondillqs5328.unsplashme.ItemDecorator;
 import com.arondillqs5328.unsplashme.MVP.contracts.CollectionPreviewContract;
@@ -29,11 +28,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class CollectionPreviewFragment extends Fragment implements CollectionPreviewContract.View {
 
     @BindView(R.id.collection_preview_recycler_view) RecyclerView mRecyclerView;
     @BindView(R.id.collection_preview_progress_bar) ProgressBar mProgressBar;
+    @BindView(R.id.collection_preview_normal) View mNormalStateView;
+    @BindView(R.id.collection_preview_no_internet) View mNoInternetConnectionView;
 
     private boolean isLoading = true;
     private int id;
@@ -94,6 +96,11 @@ public class CollectionPreviewFragment extends Fragment implements CollectionPre
         });
     }
 
+    @OnClick(R.id.retry_button)
+    public void onClickRetry() {
+        updateOldQuery();
+    }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -122,17 +129,26 @@ public class CollectionPreviewFragment extends Fragment implements CollectionPre
 
     @Override
     public void showNoInternetConection() {
-        Toast.makeText(this.getContext(), "Дурак включи інтернет", Toast.LENGTH_LONG).show();
+        mNormalStateView.setVisibility(View.GONE);
+        mNoInternetConnectionView.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideNoInternetConection() {
-
+        mNoInternetConnectionView.setVisibility(View.GONE);
+        mNormalStateView.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void updateQuery() {
         page = page + 1;
         isLoading = true;
+    }
+
+    private void updateOldQuery() {
+        page = 1;
+        isLoading = true;
+        mPhotos.clear();
+        mPresenter.onLoadMorePhoto(id, page, per_page);
     }
 }

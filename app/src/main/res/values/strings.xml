@@ -15,6 +15,10 @@
     <string name="coming_soon">Coming soon</string>
     <string name="photos">Photos</string>
     <string name="download">Download</string>
+    <string name="bhoo">BHOO!</string>
+    <string name="no_inet">No internet Connection</string>
+    <string name="check_inet">Check your Internet Connection</string>
+    <string name="retry">retry</string>
 
     <!--START SETTINGS-->
 

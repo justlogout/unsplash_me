@@ -36,17 +36,19 @@ public class CollectionPresenter extends BasePresenter implements CollectionCont
     @Override
     public void onLoadMoreCollection(int type, int page, int per_page) {
         if (isViewReady(mView)) {
-            if (isNetworkConnection()) {
-                if (isFirstLoading) {
+            if (isFirstLoading) {
+                if (isNetworkConnection()) {
                     mView.hideNoInternetConection();
                     mView.showProgressBar();
                     mRepository.loadMoreCollection(type, page, per_page);
                 } else {
-                    mRepository.loadMoreCollection(type, page, per_page);
+                    mView.hideProgressBar();
+                    mView.showNoInternetConection();
                 }
             } else {
-                mView.hideProgressBar();
-                mView.showNoInternetConection();
+                if (isNetworkConnection()) {
+                    mRepository.loadMoreCollection(type, page, per_page);
+                }
             }
         }
     }

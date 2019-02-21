@@ -28,9 +28,10 @@
                         </option>
                         <option name="values">
                           <map>
+                            <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="757575" />
-                            <entry key="outputName" value="ic_about_normal_24dp" />
-                            <entry key="sourceFile" value="C:\Users\aronDillQs5328" />
+                            <entry key="outputName" value="ic_no_internet_connection" />
+                            <entry key="sourceFile" value="D:\Download\noinet.svg" />
                           </map>
                         </option>
                       </PersistentState>

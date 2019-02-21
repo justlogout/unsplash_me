@@ -36,17 +36,19 @@ public class NewPhotoPresenter extends BasePresenter implements NewPhotoContract
     @Override
     public void onLoadMorePhoto(int page, int per_page, String order_by) {
         if (isViewReady(mView)) {
-            if (isNetworkConnection()) {
-                if (isFirstLoading) {
+            if (isFirstLoading) {
+                if (isNetworkConnection()) {
                     mView.hideNoInternetConection();
                     mView.showProgressBar();
                     mRepository.loadMoreNewPhoto(page, per_page, order_by);
                 } else {
-                    mRepository.loadMoreNewPhoto(page, per_page, order_by);
+                    mView.hideProgressBar();
+                    mView.showNoInternetConection();
                 }
             } else {
-                mView.hideProgressBar();
-                mView.showNoInternetConection();
+                if (isNetworkConnection()) {
+                    mRepository.loadMoreNewPhoto(page, per_page, order_by);
+                }
             }
         }
     }

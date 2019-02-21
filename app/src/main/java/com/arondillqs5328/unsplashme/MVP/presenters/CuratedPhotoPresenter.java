@@ -36,17 +36,19 @@ public class CuratedPhotoPresenter extends BasePresenter implements CuratedPhoto
     @Override
     public void onLoadMorePhoto(int page, int per_page, String order_by) {
         if (isViewReady(mView)) {
-            if (isNetworkConnection()) {
-                if (isFirstLoading) {
+            if (isFirstLoading) {
+                if (isNetworkConnection()) {
                     mView.hideNoInternetConection();
                     mView.showProgressBar();
                     mRepository.loadMoreCuratedPhoto(page, per_page, order_by);
                 } else {
-                    mRepository.loadMoreCuratedPhoto(page, per_page, order_by);
+                    mView.hideProgressBar();
+                    mView.showNoInternetConection();
                 }
             } else {
-                mView.hideProgressBar();
-                mView.showNoInternetConection();
+                if (isNetworkConnection()) {
+                    mRepository.loadMoreCuratedPhoto(page, per_page, order_by);
+                }
             }
         }
     }

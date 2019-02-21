@@ -55,6 +55,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
+        app:headerLayout="@layout/header"
         app:itemBackground="@drawable/nav_item_background_selector"
         app:itemTextColor="@color/nav_text_selector"
         app:menu="@menu/drawer_menu" />

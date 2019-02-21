@@ -8,7 +8,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.arondillqs5328.unsplashme.ItemDecorator;
 import com.arondillqs5328.unsplashme.MVP.contracts.NewPhotoContract;
@@ -30,11 +29,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class NewPhotoFragment extends Fragment implements NewPhotoContract.View {
 
     @BindView(R.id.new_recycler) RecyclerView mRecyclerView;
     @BindView(R.id.new_progress_bar) ProgressBar mProgressBar;
+    @BindView(R.id.new_normal) View mNormalStateView;
+    @BindView(R.id.new_no_internet) View mNoInternetConnectionView;
 
     private boolean isLoading = true;
     private int page = 1;
@@ -91,6 +93,11 @@ public class NewPhotoFragment extends Fragment implements NewPhotoContract.View 
         });
     }
 
+    @OnClick(R.id.retry_button)
+    public void onClickRetry() {
+        updateOldQuery(UnsplashPhotoAPI.ORDER_BY_LATEST);
+    }
+
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         inflater.inflate(R.menu.new_photo_menu, menu);
@@ -142,12 +149,14 @@ public class NewPhotoFragment extends Fragment implements NewPhotoContract.View 
 
     @Override
     public void showNoInternetConection() {
-        Toast.makeText(this.getContext(), "Дурак включи інтернет", Toast.LENGTH_LONG).show();
+        mNormalStateView.setVisibility(View.GONE);
+        mNoInternetConnectionView.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideNoInternetConection() {
-
+        mNoInternetConnectionView.setVisibility(View.GONE);
+        mNormalStateView.setVisibility(View.VISIBLE);
     }
 
     @Override

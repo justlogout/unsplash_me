@@ -36,17 +36,19 @@ public class CollectionPreviewPresenter extends BasePresenter implements Collect
     @Override
     public void onLoadMorePhoto(int id, int page, int per_page) {
         if (isViewReady(mView)) {
-            if (isNetworkConnection()) {
-                if (isFirstLoading) {
+            if (isFirstLoading) {
+                if (isNetworkConnection()) {
                     mView.hideNoInternetConection();
                     mView.showProgressBar();
                     mRepository.loadMoreNewPhoto(id, page, per_page);
                 } else {
-                    mRepository.loadMoreNewPhoto(id, page, per_page);
+                    mView.hideProgressBar();
+                    mView.showNoInternetConection();
                 }
             } else {
-                mView.hideProgressBar();
-                mView.showNoInternetConection();
+                if (isNetworkConnection()) {
+                    mRepository.loadMoreNewPhoto(id, page, per_page);
+                }
             }
         }
     }

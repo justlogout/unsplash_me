@@ -30,11 +30,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class CuratedPhotoFragment extends Fragment implements CuratedPhotoContract.View {
 
     @BindView(R.id.featured_recycler) RecyclerView mRecyclerView;
     @BindView(R.id.featured_progress_bar) ProgressBar mProgressBar;
+    @BindView(R.id.featured_normal) View mNormalStateView;
+    @BindView(R.id.featured_no_internet) View mNoInternetConnectionView;
 
     private boolean isLoading = true;
     private int page = 1;
@@ -91,6 +94,11 @@ public class CuratedPhotoFragment extends Fragment implements CuratedPhotoContra
         });
     }
 
+    @OnClick(R.id.retry_button)
+    public void onClickRetry() {
+        updateOldQuery(UnsplashPhotoAPI.ORDER_BY_LATEST);
+    }
+
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         inflater.inflate(R.menu.featured_photo_menu, menu);
@@ -142,12 +150,14 @@ public class CuratedPhotoFragment extends Fragment implements CuratedPhotoContra
 
     @Override
     public void showNoInternetConection() {
-        Toast.makeText(this.getContext(), "Дурак включи інтернет", Toast.LENGTH_LONG).show();
+        mNormalStateView.setVisibility(View.GONE);
+        mNoInternetConnectionView.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideNoInternetConection() {
-
+        mNoInternetConnectionView.setVisibility(View.GONE);
+        mNormalStateView.setVisibility(View.VISIBLE);
     }
 
     @Override
