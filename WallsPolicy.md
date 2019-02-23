@@ -2,52 +2,62 @@
 
 Effective date: February 22, 2019
 
-Taskline ("us", "we", or "our") operates the website and the Taskline mobile application (hereinafter referred to as the "Service").
+aAronQ Ink. built the Walls | Beautiful wallpapers app as a Free app. This SERVICE is provided by aAronQ Ink. at no cost and is intended for use as is.
 
-This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data. Our Privacy Policy for Taskline is managed with the help of Privacy Policies.
+This page is used to inform visitors regarding my policies with the collection, use, and disclosure of Personal Information if anyone decided to use my Service.
 
-We use your data to provide and improve the Service. By using the Service, you agree to the collection and use of information in accordance with this policy. Unless otherwise defined in this Privacy Policy, the terms used in this Privacy Policy have the same meanings as in our Terms and Conditions.
+If you choose to use my Service, then you agree to the collection and use of information in relation to this policy. The Personal Information that I collect is used for providing and improving the Service. I will not use or share your information with anyone except as described in this Privacy Policy.
 
-## 1. Information Collection And Use
+The terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, which is accessible at Walls | Beautiful wallpapers unless otherwise defined in this Privacy Policy.
 
-We do NOT collect any types of information, neither Personal Data nor any other kind. While using our Service, we never ask you to provide us with certain personally identifiable information that can be used to contact or identify you ("Personal Data"). Taskline does not track you or collect any Cookies Data.
+## 1. Information Collection and Use
 
-All data you input or are created in the process of application’s run store either on your device in Documents folder or in your iCloud folder. Neither we nor third parties are used any kind of servers of other devices for storing any kind of data you input or are created in the process of application’s run.
+For a better experience, while using our Service, I may require you to provide us with certain personally identifiable information. The information that I request will be retained on your device and is not collected by me in any way.
 
-## 2. Transfer Of Data
+The app does use third party services that may collect information used to identify you.
 
-All data you input or are created in the process of application’s run NEVER transfer to any third parties.
+## 2. Log Data
+
+I want to inform you that whenever you use my Service, in a case of an error in the app I collect data and information (through third party products) on your phone called Log Data. This Log Data may include information such as your device Internet Protocol (“IP”) address, device name, operating system version, the configuration of the app when utilizing my Service, the time and date of your use of the Service, and other statistics.
 
 ## 3. Disclosure Of Data
 
 Legal Requirements
 Walls has NO access to any your data and so Taskline may NOT disclose your Personal Data or any other data to third parties including cases of comply with a legal obligation.
 
-## 4. Security Of Data
+## 4. Cookies
 
-As all data you input or are created in the process of application’s run store either on your devices or in your iCloud we have NO any obligation to be responsible for safety of your data.
+Cookies are files with a small amount of data that are commonly used as anonymous unique identifiers. These are sent to your browser from the websites that you visit and are stored on your device's internal memory.
+
+This Service does not use these “cookies” explicitly. However, the app may use third party code and libraries that use “cookies” to collect information and improve their services. You have the option to either accept or refuse these cookies and know when a cookie is being sent to your device. If you choose to refuse our cookies, you may not be able to use some portions of this Service.
 
 ## 5. Service Providers
 
-We may employ third party companies and individuals to facilitate our Service ("Service Providers"), to provide the Service on our behalf, to perform Service-related services or to assist us in analyzing how our Service is used.
-These third parties have NO access to your Personal Data or to any other data you input or are created in the process of application’s run.
+I may employ third-party companies and individuals due to the following reasons:
 
-## 6. Links To Other Sites
+• To facilitate our Service;
+• To provide the Service on our behalf;
+• To perform Service-related services; or
+• To assist us in analyzing how our Service is used.
 
-Taskline has NO links to other sites, neither ours nor third parties’.
+I want to inform users of this Service that these third parties have access to your Personal Information. The reason is to perform the tasks assigned to them on our behalf. However, they are obligated not to disclose or use the information for any other purpose.
 
-## 7. Children's Privacy
+## 6. Security
 
-Our Service is intended for persons older than 3 years ("Children").
+I value your trust in providing us your Personal Information, thus we are striving to use commercially acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and reliable, and I cannot guarantee its absolute security.
 
-## 8. Changes To This Privacy Policy
+## 7. Links to Other Sites
 
-We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.
+This Service may contain links to other sites. If you click on a third-party link, you will be directed to that site. Note that these external sites are not operated by me. Therefore, I strongly advise you to review the Privacy Policy of these websites. I have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services.
 
-We will let you know via a prominent notice on our Service, prior to the change becoming effective and update the "effective date" at the top of this Privacy Policy.
-You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.
+## 8. Children’s Privacy
 
-## 9. Contact Us
+These Services do not address anyone under the age of 3. I do not knowingly collect personally identifiable information from children under 3. In the case I discover that a child under 3 has provided me with personal information, I immediately delete this from our servers. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact me so that I will be able to do necessary actions.
 
-If you have any questions about this Privacy Policy, please contact us:
-By email: aAronQInk@gmail.com
+## 9. Changes to This Privacy Policy
+
+I may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. I will notify you of any changes by posting the new Privacy Policy on this page. These changes are effective immediately after they are posted on this page.
+
+## 10. Contact Us
+
+If you have any questions or suggestions about my Privacy Policy, do not hesitate to contact me.
